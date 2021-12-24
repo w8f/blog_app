@@ -10,6 +10,11 @@ type Blog = {
   title: string;
   publishedAt: string;
   body: string;
+  category: Category;
+};
+
+type Category = {
+  name: string;
 };
 
 type Props = { blogs: Blog[] };

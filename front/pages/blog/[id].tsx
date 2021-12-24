@@ -6,6 +6,11 @@ type Blog = {
   title: string;
   publishedAt: string;
   body: string;
+  category: Category;
+};
+
+type Category = {
+  name: string;
 };
 
 type Props = {
@@ -17,6 +22,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
     <main>
       <h1>{blog.title}</h1>
       <p>{blog.publishedAt}</p>
+      <p>{blog.category && `${blog.category.name}`}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
