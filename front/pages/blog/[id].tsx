@@ -1,5 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { client } from "../../libs/client";
+import cheerio from "cheerio";
+import hljs from "highlight.js";
+import "highlight.js/styles/vs2015.css";
 
 type Blog = {
   id: string;
@@ -15,9 +18,10 @@ type Category = {
 
 type Props = {
   blog: Blog;
+  highlightedBody: string;
 };
 
-const BlogId: NextPage<Props> = ({ blog }) => {
+const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
   return (
     <main>
       <h1>{blog.title}</h1>
@@ -25,7 +29,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
       <p>{blog.category && `${blog.category.name}`}</p>
       <div
         dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
+          __html: `${highlightedBody}`,
         }}
       />
     </main>
@@ -46,9 +50,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string;
   const data = await client.get({ endpoint: "blog", contentId: id });
 
+  const $ = cheerio.load(data.body);
+
+  $("pre code").each((_, el) => {
+    const result = hljs.highlightAuto($(el).text());
+    $(el).html(result.value);
+    $(el).addClass("hljs");
+  });
+
   return {
     props: {
       blog: data,
+      highlightedBody: $.html(),
     },
   };
 };
