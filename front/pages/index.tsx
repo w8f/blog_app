@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "../libs/client";
+import Header from "../components/Header";
 
 type Blog = {
   id: string;
@@ -29,7 +30,8 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
       </Head>
 
       <main className="flex-1 overflow-x-hidden">
-        <div>
+        <Header />
+        <div className="mt-24">
           <h1 className="text-3xl font-bold underline">Hello world!</h1>
           <ul>
             {blogs.map((blog: Blog) => (

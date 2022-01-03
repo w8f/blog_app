@@ -3,6 +3,7 @@ import { client } from "../../libs/client";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
+import Header from "../../components/Header";
 
 type Blog = {
   id: string;
@@ -25,8 +26,9 @@ type Props = {
 const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
   return (
     <div className="bg-gray-200">
+      <Header />
       <main className="sm:container sm:mx-auto mx-auto min-h-screen flex-1 overflow-x-hidden">
-        <div className="text-center m-8">
+        <div className="text-center mt-24 mb-8">
           <h1 className="text-4xl font-bold m-4">{blog.title}</h1>
           {blog.publishedAt && blog.updatedAt && (
             <p>{blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}</p>
@@ -37,7 +39,7 @@ const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
           <p>{blog.category && `${blog.category.name}`}</p>
         </div>
         <div
-          className="bg-white sm:p-12 md:p-16 lg:p-20 xl:p-24 shadow"
+          className="bg-white p-4 sm:p-12 md:p-16 lg:p-20 xl:p-24 shadow"
           dangerouslySetInnerHTML={{
             __html: `${highlightedBody}`,
           }}
@@ -75,7 +77,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   $("h2").each((_, el) => {
     $(el).addClass(
-      "text-3xl border-solid border-4 border-blue-300 bg-blue-200 m-2 "
+      "text-3xl border-solid border-4 border-gray-300 bg-gray-200 m-2"
     );
   });
 
