@@ -8,6 +8,7 @@ type Blog = {
   id: string;
   title: string;
   publishedAt: string;
+  updatedAt: string;
   body: string;
   category: Category;
 };
@@ -27,7 +28,12 @@ const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
       <main className="sm:container sm:mx-auto mx-auto min-h-screen flex-1 overflow-x-hidden">
         <div className="text-center m-8">
           <h1 className="text-4xl font-bold m-4">{blog.title}</h1>
-          <p>{blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}</p>
+          {blog.publishedAt && blog.updatedAt && (
+            <p>{blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}</p>
+          )}
+          {blog.publishedAt && !blog.updatedAt && (
+            <p>{blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}</p>
+          )}
           <p>{blog.category && `${blog.category.name}`}</p>
         </div>
         <div

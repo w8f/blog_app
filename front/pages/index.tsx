@@ -8,6 +8,7 @@ type Blog = {
   id: string;
   title: string;
   publishedAt: string;
+  updatedAt: string;
   body: string;
   category: Category;
 };
