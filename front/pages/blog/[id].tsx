@@ -18,16 +18,26 @@ type Category = {
   name: string;
 };
 
+type tableOfContent = {
+  title: string;
+  size: "h1" | "h2" | "h3";
+};
+
 type Props = {
   blog: Blog;
   highlightedBody: string;
+  tableOfContents: tableOfContent[];
 };
 
-const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
+const BlogId: NextPage<Props> = ({
+  blog,
+  highlightedBody,
+  tableOfContents,
+}) => {
   return (
     <div className="bg-gray-200">
       <Header />
-      <main className="sm:container sm:mx-auto mx-auto min-h-screen flex-1 overflow-x-hidden">
+      <main className="sm:container mx-auto min-h-screen flex-1 overflow-x-hidden">
         <div className="text-center mt-24 mb-8">
           <h1 className="text-4xl font-bold m-4">{blog.title}</h1>
           {blog.publishedAt && blog.updatedAt && (
@@ -38,12 +48,28 @@ const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
           )}
           <p>{blog.category && `${blog.category.name}`}</p>
         </div>
-        <div
-          className="bg-white p-4 sm:p-12 md:p-16 lg:p-20 xl:p-24 shadow"
-          dangerouslySetInnerHTML={{
-            __html: `${highlightedBody}`,
-          }}
-        />
+        <div className="sm:flex items-start justify-center justify-items-start">
+          <div
+            className="bg-white p-4 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 lg:pt-20 lg:pb-20 xl:pt-24 xl:pb-24 shadow sm:w-3/5"
+            dangerouslySetInnerHTML={{
+              __html: `${highlightedBody}`,
+            }}
+          ></div>
+          <div className="m-8 flex flex-col max-w-xs">
+            <div className="fixed bg-white top-64">
+              <p className="text-center font-bold p-4 bg-blue-50">
+                table of contents
+              </p>
+              {tableOfContents.map((content, i) => {
+                return (
+                  <div key={i} className="pt-3 pl-3 pr-3 pb-1">
+                    {content.title}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
@@ -64,6 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const data = await client.get({ endpoint: "blog", contentId: id });
 
   const $ = cheerio.load(data.body);
+  const tableOfContents: tableOfContent[] = [];
 
   $("pre code").each((_, el) => {
     const result = hljs.highlightAuto($(el).text());
@@ -75,7 +102,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     $(el).addClass("text-4xl m-1");
   });
 
-  $("h2").each((_, el) => {
+  $("h2").each((i, el) => {
+    // 目次用
+    tableOfContents.push({ title: $(el).contents().text(), size: "h2" });
+    console.log(i);
+
     $(el).addClass(
       "text-3xl border-solid border-4 border-gray-300 bg-gray-200 m-2"
     );
@@ -109,6 +140,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       blog: data,
       highlightedBody: $.html(),
+      tableOfContents,
     },
   };
 };
