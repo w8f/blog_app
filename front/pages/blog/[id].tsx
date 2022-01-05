@@ -55,14 +55,14 @@ const BlogId: NextPage<Props> = ({
               __html: `${highlightedBody}`,
             }}
           ></div>
-          <div className="m-8 flex flex-col max-w-xs">
-            <div className="fixed bg-white top-64">
+          <div className="invisible sm:visible sm: overflow-y-scroll m-8 w-96 flex flex-col max-h-60">
+            <div className="fixed bg-white top-44 mr-8">
               <p className="text-center font-bold p-4 bg-blue-50">
                 table of contents
               </p>
               {tableOfContents.map((content, i) => {
                 return (
-                  <div key={i} className="pt-3 pl-3 pr-3 pb-1">
+                  <div key={i} className="p-2">
                     {content.title}
                   </div>
                 );
@@ -102,10 +102,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     $(el).addClass("text-4xl m-1");
   });
 
-  $("h2").each((i, el) => {
+  $("h2").each((_, el) => {
     // 目次用
     tableOfContents.push({ title: $(el).contents().text(), size: "h2" });
-    console.log(i);
 
     $(el).addClass(
       "text-3xl border-solid border-4 border-gray-300 bg-gray-200 m-2"
