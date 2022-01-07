@@ -4,6 +4,7 @@ import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 type Blog = {
   id: string;
@@ -40,23 +41,27 @@ const BlogId: NextPage<Props> = ({
       <main className="sm:container mx-auto min-h-screen flex-1 overflow-x-hidden">
         <div className="text-center mt-24 mb-8">
           <h1 className="text-4xl font-bold m-4">{blog.title}</h1>
-          {blog.publishedAt && blog.updatedAt && (
-            <p>{blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}</p>
-          )}
-          {blog.publishedAt && !blog.updatedAt && (
-            <p>{blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}</p>
-          )}
-          <p>{blog.category && `${blog.category.name}`}</p>
+          <p className="text-sm">
+            {blog.publishedAt &&
+              blog.updatedAt &&
+              blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
+            {blog.publishedAt &&
+              !blog.updatedAt &&
+              blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}
+          </p>
+          <span className="inline-block bg-white rounded-full mt-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            {blog.category && `#${blog.category.name}`}
+          </span>
         </div>
         <div className="sm:flex items-start justify-center justify-items-start">
           <div
-            className="bg-white p-4 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 lg:pt-20 lg:pb-20 xl:pt-24 xl:pb-24 shadow sm:w-3/5"
+            className="bg-white rounded-xl p-4 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 lg:pt-20 lg:pb-20 xl:pt-24 xl:pb-24 shadow sm:w-3/5"
             dangerouslySetInnerHTML={{
               __html: `${highlightedBody}`,
             }}
           ></div>
           <div className="invisible sm:visible sm: overflow-y-scroll m-8 w-96 flex flex-col max-h-60">
-            <div className="fixed bg-white top-44 mr-8">
+            <div className="fixed bg-white top-44 mr-8 rounded-lg">
               <p className="text-center font-bold p-4 bg-blue-50">
                 table of contents
               </p>
@@ -71,6 +76,7 @@ const BlogId: NextPage<Props> = ({
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

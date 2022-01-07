@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "../libs/client";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 type Blog = {
   id: string;
@@ -43,9 +44,9 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
 
           <ul>
             {blogs.map((blog: Blog) => (
-              <li key={blog.id}>
+              <div key={blog.id}>
                 <Link href={`/blog/${blog.id}`} passHref>
-                  <div className="max-w-sm rounded overflow-hidden shadow-lg flex bg-white">
+                  <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg flex bg-white">
                     <div className="justify-center m-4 text-center">
                       <Image
                         src={blog.category.image.url}
@@ -55,8 +56,16 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                       />
                     </div>
                     <div className="mt-4">
-                      <div className="font-bold text-xl mt-2 mb-2 text-center">
-                        {blog.title}
+                      <div className="mt-2 mb-2 text-center">
+                        <p className="font-bold text-xl">{blog.title}</p>
+                        <p className="text-sm">
+                          {blog.publishedAt &&
+                            blog.updatedAt &&
+                            blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
+                          {blog.publishedAt &&
+                            !blog.updatedAt &&
+                            blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}
+                        </p>
                       </div>
                       <div className="px-6 pt-4 pb-2 text-center">
                         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
@@ -66,31 +75,18 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                     </div>
                   </div>
                 </Link>
-              </li>
+              </div>
             ))}
           </ul>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({ endpoint: "blog" });
-  console.log(data.contents[0].category);
   return {
     props: {
       blogs: data.contents as Blog[],
