@@ -60,8 +60,8 @@ const BlogId: NextPage<Props> = ({
               __html: `${highlightedBody}`,
             }}
           ></div>
-          <div className="invisible sm:visible sm: overflow-y-scroll m-8 w-96 flex flex-col max-h-60">
-            <div className="fixed bg-white top-44 mr-8 rounded-lg">
+          <div className="invisible sm:visible sm:overflow-y-scroll m-8 w-96 flex flex-col">
+            <div className="fixed bg-white top-44 mr-8 rounded-lg invisible sm:visible sm:overflow-y-scroll m-8">
               <p className="text-center font-bold p-4 bg-blue-50">
                 table of contents
               </p>
