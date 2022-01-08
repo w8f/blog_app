@@ -46,7 +46,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
             {blogs.map((blog: Blog) => (
               <div key={blog.id}>
                 <Link href={`/blog/${blog.id}`} passHref>
-                  <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg flex bg-white">
+                  <a className="max-w-sm rounded-2xl overflow-hidden shadow-lg flex bg-white">
                     <div className="justify-center m-4 text-center">
                       <Image
                         src={blog.category.image.url}
@@ -73,7 +73,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </Link>
               </div>
             ))}
