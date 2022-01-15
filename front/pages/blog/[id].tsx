@@ -36,9 +36,9 @@ const BlogId: NextPage<Props> = ({
   tableOfContents,
 }) => {
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 box-border overflow-clip">
       <Header />
-      <main className="sm:container mx-auto min-h-screen flex-1 overflow-x-hidden">
+      <main className="sm:container mx-auto min-h-screen flex-1 h-full">
         <div className="text-center mt-24 mb-8">
           <h1 className="text-4xl font-bold m-4">{blog.title}</h1>
           <p className="text-sm">
@@ -53,27 +53,31 @@ const BlogId: NextPage<Props> = ({
             {blog.category && `#${blog.category.name}`}
           </span>
         </div>
-        <div className="sm:flex items-start justify-center justify-items-start">
-          <div
-            className="bg-white rounded-xl p-4 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 lg:pt-20 lg:pb-20 xl:pt-24 xl:pb-24 shadow sm:w-3/5"
+        <div className="sm:flex h-full justify-center">
+          <section
+            className="bg-white block rounded-xl p-4 sm:pt-12 sm:pb-12 shadow sm:w-3/5"
             dangerouslySetInnerHTML={{
               __html: `${highlightedBody}`,
             }}
-          ></div>
-          <div className="invisible sm:visible sm:overflow-y-scroll m-8 w-96 flex flex-col">
-            <div className="fixed bg-white top-44 mr-8 rounded-lg invisible sm:visible sm:overflow-y-scroll m-8">
-              <p className="text-center font-bold p-4 bg-blue-50">
-                table of contents
-              </p>
-              {tableOfContents.map((content, i) => {
-                return (
-                  <div key={i} className="p-2">
-                    {content.title}
-                  </div>
-                );
-              })}
+          ></section>
+          <aside className="hidden sm:block sm:visible m-8 w-96 box-border">
+            <div className="h-full">
+              <div className="sticky top-10 flex flex-col">
+                <div className=" bg-white mr-8 rounded-lg invisible sm:visible m-8">
+                  <p className="text-center font-bold p-4 bg-blue-50">
+                    table of contents
+                  </p>
+                  {tableOfContents.map((content, i) => {
+                    return (
+                      <div key={i} className="p-2">
+                        ・{content.title}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </main>
       <Footer />
