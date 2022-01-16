@@ -39,7 +39,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
 
       <main className="flex-1 overflow-x-hidden bg-gray-100 block items-center">
         <Header />
-        <div className="mt-24 p-6 max-w-4xl container mx-auto">
+        <div className="mt-6 sm:mt-20 p-6 max-w-4xl container mx-auto">
           <h1 className="font-bold text-3xl sm:text-center mb-10">記事一覧</h1>
           <ul className="sm:flex sm:justify-between sm:items-start">
             {blogs.map((blog: Blog) => (

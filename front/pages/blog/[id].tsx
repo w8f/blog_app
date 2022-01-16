@@ -39,8 +39,8 @@ const BlogId: NextPage<Props> = ({
     <div className="bg-gray-200 box-border overflow-clip">
       <Header />
       <main className="sm:container mx-auto min-h-screen flex-1 h-full">
-        <div className="text-center mt-24 mb-8">
-          <h1 className="text-4xl font-bold m-4">{blog.title}</h1>
+        <div className="text-center mt-8 sm:mt-20 mb-8">
+          <h1 className="text-3xl font-bold m-4">{blog.title}</h1>
           <p className="text-sm">
             {blog.publishedAt &&
               blog.updatedAt &&
