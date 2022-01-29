@@ -43,10 +43,10 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
           <h1 className="font-bold text-3xl sm:text-center mb-10">記事一覧</h1>
           <ul className="sm:flex sm:justify-between sm:items-start">
             {blogs.map((blog: Blog) => (
-              <article className="sm:block sm:w-1/2 text-center" key={blog.id}>
+              <article className="sm:block text-center" key={blog.id}>
                 <Link href={`/blog/${blog.id}`} passHref>
                   <a className="sm:justify-center rounded-2xl overflow-hidden shadow-lg flex bg-white m-4">
-                    <div className="justify-center m-4 text-center">
+                    <div className="justify-center m-4 text-center min-w-max">
                       <Image
                         src={blog.category.image.url}
                         alt=""
