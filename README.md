@@ -1,6 +1,6 @@
 # blog_app
 
-Next.js × microCMSを利用したブログアプリ。
+Next.js × microCMS を利用したブログアプリ。
 
 ## 環境構築
 
@@ -11,10 +11,12 @@ Next.js × microCMSを利用したブログアプリ。
 ## ライブラリインストール
 
 - tailwindcss\
-<https://tailwindcss.com/docs/guides/nextjs>
+  <https://tailwindcss.com/docs/guides/nextjs>
 
-    エディタの警告を消したい時\
-    → VSCodeのプラグイン **PostCSS Language Support**をインストール
+      エディタの警告を消したい時\
+      → VSCodeのプラグイン **PostCSS Language Support**をインストール
 
-    エディタにtailwind cssのオートコンプリート機能やlint機能を入れたい時\
-    → VSCodeのプラグイン **Tailwind CSS IntelliSense**をインストール
+      エディタにtailwind cssのオートコンプリート機能やlint機能を入れたい時\
+      → VSCodeのプラグイン **Tailwind CSS IntelliSense**をインストール
+
+- Font Awesome
