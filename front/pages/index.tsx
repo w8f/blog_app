@@ -45,7 +45,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
             {blogs.map((blog: Blog) => (
               <article className="sm:block text-center" key={blog.id}>
                 <Link href={`/blog/${blog.id}`} passHref>
-                  <a className="sm:justify-center rounded-2xl overflow-hidden shadow-lg flex bg-white m-4">
+                  <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white m-4">
                     <div className="justify-center m-4 text-center min-w-max">
                       <Image
                         src={blog.category.image.url}
@@ -54,9 +54,9 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                         height="100"
                       />
                     </div>
-                    <div className="mt-4">
+                    <div className="mt-4 sm:w-1/2">
                       <div className="mt-2 mb-2 text-center">
-                        <p className="font-semibold text-md whitespace-nowrap overflow-ellipsis">
+                        <p className="font-semibold text-md overflow-ellipsis">
                           {blog.title}
                         </p>
                         <p className="text-sm">
