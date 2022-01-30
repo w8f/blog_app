@@ -5,6 +5,7 @@ import Link from "next/link";
 import { client } from "../libs/client";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Tag from "../components/Tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -76,9 +77,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                         </div>
                       </div>
                       <div className="px-6 pt-4 pb-2 text-center">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                          #{blog.category.name}
-                        </span>
+                        <Tag title={blog.category.name} bgColor="bg-gray-200" />
                       </div>
                     </div>
                   </a>

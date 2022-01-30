@@ -9,6 +9,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Tag from "../../components/Tag";
 
 type Blog = {
   id: string;
@@ -59,13 +60,13 @@ const BlogId: NextPage<Props> = ({
               更新日 : {blog.updatedAt.match(/\d+-\d+-\d+/)}
             </p>
           </div>
-          <span className="inline-block bg-white rounded-full mt-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            {blog.category && `#${blog.category.name}`}
-          </span>
+          <div className="mt-4">
+            <Tag title={blog.category.name} bgColor="bg-white" />
+          </div>
         </div>
         <div className="sm:flex h-full justify-center">
           <section
-            className="bg-white block rounded-xl p-4 sm:pt-12 sm:pb-12 shadow sm:w-3/5"
+            className="bg-white block rounded-xl mr-2 ml-2 p-4 sm:pt-12 sm:pb-12 shadow sm:w-3/5"
             dangerouslySetInnerHTML={{
               __html: `${highlightedBody}`,
             }}
