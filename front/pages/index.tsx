@@ -5,6 +5,8 @@ import Link from "next/link";
 import { client } from "../libs/client";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 
 type Blog = {
   id: string;
@@ -59,14 +61,19 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                         <p className="font-semibold text-md overflow-ellipsis">
                           {blog.title}
                         </p>
-                        <p className="text-sm">
-                          {blog.publishedAt &&
-                            blog.updatedAt &&
-                            blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
-                          {blog.publishedAt &&
-                            !blog.updatedAt &&
-                            blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}
-                        </p>
+                        <div className="flex justify-center items-center">
+                          <span className="mr-1">
+                            <FontAwesomeIcon icon={faArrowCircleUp} />
+                          </span>
+                          <p className="text-sm">
+                            {blog.publishedAt &&
+                              blog.updatedAt &&
+                              blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
+                            {blog.publishedAt &&
+                              !blog.updatedAt &&
+                              blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}
+                          </p>
+                        </div>
                       </div>
                       <div className="px-6 pt-4 pb-2 text-center">
                         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">

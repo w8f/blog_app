@@ -1,4 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { client } from "../../libs/client";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
@@ -41,14 +45,20 @@ const BlogId: NextPage<Props> = ({
       <main className="sm:container mx-auto min-h-screen flex-1 h-full">
         <div className="text-center mt-8 sm:mt-20 mb-8">
           <h1 className="text-3xl font-bold m-4">{blog.title}</h1>
-          <p className="text-sm">
-            {blog.publishedAt &&
-              blog.updatedAt &&
-              blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
-            {blog.publishedAt &&
-              !blog.updatedAt &&
-              blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}
-          </p>
+          <div className="sm:flex justify-center items-center">
+            <p className="text-sm sm:mr-2">
+              <span className="mr-1">
+                <FontAwesomeIcon icon={faCalendar} />
+              </span>
+              投稿日 : {blog.publishedAt.match(/\d+-\d+-\d+/)}
+            </p>
+            <p className="text-sm">
+              <span className="mr-1">
+                <FontAwesomeIcon icon={faArrowCircleUp} />
+              </span>
+              更新日 : {blog.updatedAt.match(/\d+-\d+-\d+/)}
+            </p>
+          </div>
           <span className="inline-block bg-white rounded-full mt-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
             {blog.category && `#${blog.category.name}`}
           </span>
@@ -65,6 +75,9 @@ const BlogId: NextPage<Props> = ({
               <div className="sticky top-10 flex flex-col">
                 <div className=" bg-white mr-8 rounded-lg invisible sm:visible m-8">
                   <p className="text-center font-bold p-4 bg-blue-50">
+                    <span className="mr-1">
+                      <FontAwesomeIcon icon={faBook} />
+                    </span>
                     table of contents
                   </p>
                   {tableOfContents.map((content, i) => {
