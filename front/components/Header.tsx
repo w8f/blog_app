@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="bg-blue-50 h-16 flex items-center">
+    <div className="bg-white border-b-2 h-14 flex items-center">
       <Link href="/">
-        <a className="hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 ml-8 z-10">
+        <a className="hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 ml-4 sm:ml-8 z-10">
           Hayakawa&apos;s Tech Blog
         </a>
       </Link>

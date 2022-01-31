@@ -29,7 +29,7 @@ const BlogId: NextPage<Props> = ({
   tableOfContents,
 }) => {
   return (
-    <div className="bg-gray-200 box-border overflow-clip">
+    <div className="bg-blue-50 box-border overflow-clip">
       <Header />
       <main className="sm:container mx-auto min-h-screen flex-1 h-full">
         <div className="text-center mt-8 sm:mt-20 mb-8">
@@ -64,8 +64,8 @@ const BlogId: NextPage<Props> = ({
           <aside className="hidden sm:block sm:visible m-8 w-96 box-border">
             <div className="h-full">
               <div className="sticky top-10 flex flex-col">
-                <div className=" bg-white mr-8 rounded-lg invisible sm:visible m-8">
-                  <p className="text-center font-bold p-4 bg-blue-50">
+                <div className=" bg-white mr-8 border-2 rounded-lg invisible sm:visible m-8">
+                  <p className="text-center font-bold p-4 bg-blue-100">
                     <span className="mr-1">
                       <FontAwesomeIcon icon={faBook} />
                     </span>
@@ -121,12 +121,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     tableOfContents.push({ title: $(el).contents().text(), size: "h2" });
 
     $(el).addClass(
-      "text-xl sm:text-3xl border-solid border-4 border-gray-300 bg-gray-200 ml-2 mr-2 mt-4 mb-4"
+      "text-2xl sm:text-3xl border-solid border-b-4 border-gray-200 pl-2 ml-2 mr-2 mt-12 sm:mt-16 mb-8"
     );
   });
 
   $("h3").each((_, el) => {
-    $(el).addClass("text-lg sm:text-2xl m-3 underline");
+    $(el).addClass("text-lg sm:text-xl mt-6 ml-3 mr-3 mb-3");
   });
 
   $("a").each((_, el) => {
@@ -134,19 +134,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   $("p").each((_, el) => {
-    $(el).addClass("ml-4 mr-4 mb-4 text-gray-800");
+    $(el).addClass("ml-4 mr-4 mt-2 mb-4 text-gray-800");
   });
 
   $("ul").each((_, el) => {
-    $(el).addClass("ml-12 mt-4 mb-4 pd-1 list-disc text-gray-800");
+    $(el).addClass("ml-12 mt-4 mb-2 pd-1 list-disc text-gray-800");
   });
 
   $("ol").each((_, el) => {
-    $(el).addClass("ml-12 mt-4 mb-4 pd-1 list-decimal text-gray-800");
+    $(el).addClass("ml-12 mt-4 mb-2 pd-1 list-decimal text-gray-800");
   });
 
   $("blockquote").each((_, el) => {
-    $(el).addClass("border-l-4 mr-4 bg-gray-50 text-gray-600");
+    $(el).addClass("border-l-4 mr-4 bg-gray-50 pl-8 text-gray-600");
   });
 
   $("br").each((_, el) => {

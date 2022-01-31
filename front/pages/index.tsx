@@ -21,7 +21,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex-1 overflow-x-hidden bg-gray-100 block items-center">
+      <main className="flex-1 overflow-x-hidden bg-blue-50 block items-center">
         <Header />
         <div className="mt-6 sm:mt-20 p-6 max-w-6xl container mx-auto">
           <h1 className="font-bold text-3xl sm:text-center mb-10">記事一覧</h1>
