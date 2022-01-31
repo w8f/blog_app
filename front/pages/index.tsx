@@ -8,26 +8,7 @@ import Footer from "../components/Footer";
 import Tag from "../components/Tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
-
-type Blog = {
-  id: string;
-  title: string;
-  publishedAt: string;
-  updatedAt: string;
-  body: string;
-  category: Category;
-};
-
-type Category = {
-  name: string;
-  image: CategoryImage;
-};
-
-type CategoryImage = {
-  url: string;
-  height: string;
-  width: string;
-};
+import { Blog } from "../interfaces/index";
 
 type Props = { blogs: Blog[] };
 
@@ -51,7 +32,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                   <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white items-center m-4">
                     <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
                       <Image
-                        src={blog.category.image.url}
+                        src={blog.categories[0].image.url}
                         alt=""
                         width="100"
                         height="100"
@@ -77,7 +58,13 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                         </div>
                       </div>
                       <div className="px-6 pt-4 pb-2 text-center">
-                        <Tag title={blog.category.name} bgColor="bg-gray-200" />
+                        {blog.categories.map((category, idx) => (
+                          <Tag
+                            key={idx}
+                            title={category.name}
+                            bgColor="bg-gray-200"
+                          />
+                        ))}
                       </div>
                     </div>
                   </a>

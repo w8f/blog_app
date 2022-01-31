@@ -10,19 +10,7 @@ import "highlight.js/styles/vs2015.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Tag from "../../components/Tag";
-
-type Blog = {
-  id: string;
-  title: string;
-  publishedAt: string;
-  updatedAt: string;
-  body: string;
-  category: Category;
-};
-
-type Category = {
-  name: string;
-};
+import { Blog } from "../../interfaces/index";
 
 type tableOfContent = {
   title: string;
@@ -61,7 +49,9 @@ const BlogId: NextPage<Props> = ({
             </p>
           </div>
           <div className="mt-4">
-            <Tag title={blog.category.name} bgColor="bg-white" />
+            {blog.categories.map((category, idx) => (
+              <Tag key={idx} title={category.name} bgColor="bg-white" />
+            ))}
           </div>
         </div>
         <div className="sm:flex h-full justify-center">
