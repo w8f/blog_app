@@ -119,7 +119,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   $("pre code").each((_, el) => {
     const result = hljs.highlightAuto($(el).text());
     $(el).html(result.value);
-    $(el).addClass("hljs");
+    $(el).addClass("hljs m-2");
   });
 
   $("h1").each((_, el) => {
@@ -131,12 +131,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     tableOfContents.push({ title: $(el).contents().text(), size: "h2" });
 
     $(el).addClass(
-      "text-3xl border-solid border-4 border-gray-300 bg-gray-200 m-2"
+      "text-xl sm:text-3xl border-solid border-4 border-gray-300 bg-gray-200 ml-2 mr-2 mt-4 mb-4"
     );
   });
 
   $("h3").each((_, el) => {
-    $(el).addClass("text-2xl m-3 underline");
+    $(el).addClass("text-lg sm:text-2xl m-3 underline");
   });
 
   $("a").each((_, el) => {
@@ -144,19 +144,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   $("p").each((_, el) => {
-    $(el).addClass("ml-4 mr-4 mb-4");
+    $(el).addClass("ml-4 mr-4 mb-4 text-gray-800");
   });
 
   $("ul").each((_, el) => {
-    $(el).addClass("ml-12 pd-1 list-disc");
+    $(el).addClass("ml-12 mt-4 mb-4 pd-1 list-disc text-gray-800");
   });
 
   $("ol").each((_, el) => {
-    $(el).addClass("ml-12 pd-1 list-decimal");
+    $(el).addClass("ml-12 mt-4 mb-4 pd-1 list-decimal text-gray-800");
   });
 
   $("blockquote").each((_, el) => {
-    $(el).addClass("border-l-8 ml-4 mr-4 bg-gray-50");
+    $(el).addClass("border-l-4 mr-4 bg-gray-50 text-gray-600");
+  });
+
+  $("br").each((_, el) => {
+    $(el).addClass("mb-4 block");
   });
 
   return {

@@ -42,14 +42,14 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
 
       <main className="flex-1 overflow-x-hidden bg-gray-100 block items-center">
         <Header />
-        <div className="mt-6 sm:mt-20 p-6 max-w-4xl container mx-auto">
+        <div className="mt-6 sm:mt-20 p-6 max-w-6xl container mx-auto">
           <h1 className="font-bold text-3xl sm:text-center mb-10">記事一覧</h1>
           <ul className="sm:flex sm:flex-wrap w-full sm:justify-between sm:items-start">
             {blogs.map((blog: Blog) => (
               <article className="text-center sm:w-1/2" key={blog.id}>
                 <Link href={`/blog/${blog.id}`} passHref>
-                  <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white m-4">
-                    <div className="justify-center m-4 text-center min-w-max">
+                  <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white items-center m-4">
+                    <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
                       <Image
                         src={blog.category.image.url}
                         alt=""
@@ -57,7 +57,7 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
                         height="100"
                       />
                     </div>
-                    <div className="mt-4 sm:w-1/2">
+                    <div className="mt-4 sm:w-2/3">
                       <div className="mt-2 mb-2 text-center">
                         <p className="font-semibold text-md overflow-ellipsis">
                           {blog.title}
