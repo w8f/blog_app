@@ -19,3 +19,8 @@ export type CategoryImage = {
   height: string;
   width: string;
 };
+
+export type TagProps = {
+  title: string;
+  bgColor: string;
+};
