@@ -1,14 +1,10 @@
 import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { client } from "../libs/client";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import Tag from "../components/Tag/Tag";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 import { Blog } from "../interfaces/index";
+import ArticleCard from "../components/ArticleCard/ArticleCard";
 
 type Props = { blogs: Blog[] };
 
@@ -26,50 +22,8 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
         <div className="mt-6 sm:mt-20 p-6 max-w-6xl container mx-auto">
           <h1 className="font-bold text-3xl sm:text-center mb-10">記事一覧</h1>
           <ul className="sm:flex sm:flex-wrap w-full sm:justify-between sm:items-start">
-            {blogs.map((blog: Blog) => (
-              <article className="text-center sm:w-1/2" key={blog.id}>
-                <Link href={`/blog/${blog.id}`} passHref>
-                  <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white items-center m-4">
-                    <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
-                      <Image
-                        src={blog.categories[0].image.url}
-                        alt=""
-                        width="100"
-                        height="100"
-                      />
-                    </div>
-                    <div className="mt-4 sm:w-2/3">
-                      <div className="mt-2 mb-2 text-center">
-                        <p className="font-semibold text-md overflow-ellipsis">
-                          {blog.title}
-                        </p>
-                        <div className="flex justify-center items-center">
-                          <span className="mr-1">
-                            <FontAwesomeIcon icon={faArrowCircleUp} />
-                          </span>
-                          <p className="text-sm">
-                            {blog.publishedAt &&
-                              blog.updatedAt &&
-                              blog.updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
-                            {blog.publishedAt &&
-                              !blog.updatedAt &&
-                              blog.publishedAt.match(/\d+-\d+-\d+/) + "に公開"}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="px-6 pt-4 pb-2 text-center">
-                        {blog.categories.map((category, idx) => (
-                          <Tag
-                            key={idx}
-                            title={category.name}
-                            bgColor="bg-gray-200"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </article>
+            {blogs.map((blog: Blog, index) => (
+              <ArticleCard key={index} {...blog} />
             ))}
           </ul>
         </div>
