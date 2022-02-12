@@ -1,9 +1,10 @@
+import { VFC } from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
-const Header = () => {
+const Header: VFC = () => {
   return (
     <div className="bg-white border-b-2 h-14 flex items-center">
       <Link href="/">
