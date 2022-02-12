@@ -1,5 +1,3 @@
-import "../styles/globals.css";
-
 module.exports = {
   typescript: { reactDocgen: false },
   stories: [
