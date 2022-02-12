@@ -12,12 +12,18 @@ const ArticleCard: VFC<Blog> = (blog) => {
       <Link href={`/blog/${blog.id}`} passHref>
         <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white items-center m-4">
           <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
-            <Image
-              src={blog.categories[0].image.url}
-              alt=""
-              width="100"
-              height="100"
-            />
+            {blog.categories[0].image.url && (
+              <Image
+                src={blog.categories[0].image.url}
+                alt=""
+                width="100"
+                height="100"
+              />
+            )}
+            {/* 多分ないと思うけど・・ */}
+            {blog.categories[0].image.url == "" && (
+              <Image src="/noimage.jpeg" alt="" width="100" height="100" />
+            )}
           </div>
           <div className="mt-4 sm:w-2/3">
             <div className="mt-2 mb-2 text-center">
