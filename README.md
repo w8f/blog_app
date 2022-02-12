@@ -1,6 +1,39 @@
-# blog_app
+# Hayakawa's Tech Blog
 
-Next.js × microCMS を利用したブログアプリ。
+Next.js × microCMS × tailwindcss を利用したJamstack構成の個人ブログアプリ。
+
+## Programming language / Library
+
+### Web Frontend
+
+React, Next.js, TypeScript, tailwindcss, StoryBook, FontAwesome(Icon), highlight.js, cheerio
+
+### Backend
+
+Node.js(v16)
+
+### Infrastructure
+
+Vercel
+
+### CMS
+
+microCMS
+
+### Environment setup
+
+Docker
+
+## Components
+
+コンポーネントはstorybookで管理しています。\
+また、開発者以外でも見れるよう、vercel上に公開しました。
+
+master branch's storybook: https://blog-ui-storybook.vercel.app/
+
+## 機能要件
+- トップページ（記事一覧の表示）
+- 記事ページ(記事の詳細を表示)
 
 ## 環境構築
 
