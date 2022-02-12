@@ -4,7 +4,7 @@ import { Meta, Story } from "@storybook/react";
 
 export default {
   component: Tag,
-  title: "tag",
+  title: "Tag",
 } as Meta;
 
 const Template: Story<TagProps> = (args) => <Tag {...args} />;

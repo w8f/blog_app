@@ -4,7 +4,7 @@ import { Meta, Story } from "@storybook/react";
 
 export default {
   component: ArticleCard,
-  title: "articleCard",
+  title: "ArticleCard",
 } as Meta;
 
 const Template: Story<Blog> = (args) => <ArticleCard {...args} />;

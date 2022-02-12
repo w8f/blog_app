@@ -3,7 +3,7 @@ import { Meta, Story } from "@storybook/react";
 
 export default {
   component: Footer,
-  title: "footer",
+  title: "Footer",
 } as Meta;
 
 const Template: Story = (args) => <Footer {...args} />;
