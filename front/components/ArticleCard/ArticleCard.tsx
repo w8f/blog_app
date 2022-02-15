@@ -46,7 +46,7 @@ const ArticleCard: VFC<Blog> = (blog) => {
             </div>
             <div className="px-6 pt-4 pb-2 text-center">
               {blog.categories.map((category, idx) => (
-                <Tag key={idx} title={category.name} bgColor="bg-gray-200" />
+                <Tag key={idx} bgColor="bg-gray-200" {...category} />
               ))}
             </div>
           </div>

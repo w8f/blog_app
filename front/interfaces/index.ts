@@ -10,6 +10,7 @@ export type Blog = {
 };
 
 export type Category = {
+  id: string;
   name: string;
   image: CategoryImage;
 };
@@ -20,7 +21,4 @@ export type CategoryImage = {
   width: string;
 };
 
-export type TagProps = {
-  title: string;
-  bgColor: string;
-};
+export type TagProps = Category & { bgColor: string };

@@ -3,12 +3,13 @@ import Head from "next/head";
 import { client } from "../libs/client";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Blog } from "../interfaces/index";
+import Tag from "../components/Tag/Tag";
+import { Blog, Category } from "../interfaces/index";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
 
-type Props = { blogs: Blog[] };
+type Props = { blogs: Blog[]; categories: Category[] };
 
-const Home: NextPage<Props> = ({ blogs }: Props) => {
+const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
@@ -27,6 +28,14 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
             ))}
           </ul>
         </div>
+        <div className="mt-6 sm:mt-20 p-6 max-w-6xl container mx-auto">
+          <h1 className="font-bold text-3xl sm:text-center mb-10">タグ</h1>
+          <ul className="sm:flex sm:flex-wrap w-full sm:justify-between sm:items-start">
+            {categories.map((category: Category, index) => (
+              <Tag key={index} bgColor={"bg-gray-200"} {...category} />
+            ))}
+          </ul>
+        </div>
       </main>
       <Footer />
     </div>
@@ -34,10 +43,13 @@ const Home: NextPage<Props> = ({ blogs }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get({ endpoint: "blog" });
+  const blog = await client.get({ endpoint: "blog" });
+  const category = await client.get({ endpoint: "category" });
+
   return {
     props: {
-      blogs: data.contents as Blog[],
+      blogs: blog.contents as Blog[],
+      categories: category.contents as Category[],
     },
   };
 };

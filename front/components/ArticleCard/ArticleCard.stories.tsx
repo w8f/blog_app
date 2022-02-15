@@ -19,6 +19,7 @@ Default.args = {
   body: "<h1>hogehoge</h1>",
   categories: [
     {
+      id: "1",
       name: "hoge",
       image: {
         url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",
@@ -27,6 +28,7 @@ Default.args = {
       },
     },
     {
+      id: "2",
       name: "fuga",
       image: {
         url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",
@@ -47,6 +49,7 @@ NoImage.args = {
   body: "<h1>hogehoge</h1>",
   categories: [
     {
+      id: "1",
       name: "hoge",
       image: {
         url: "",
@@ -55,6 +58,7 @@ NoImage.args = {
       },
     },
     {
+      id: "2",
       name: "fuga",
       image: {
         url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",

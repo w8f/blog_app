@@ -57,7 +57,7 @@ const BlogId: NextPage<Props> = ({
             </div>
             <div className="mt-4">
               {blog.categories.map((category, idx) => (
-                <Tag key={idx} title={category.name} bgColor="bg-white" />
+                <Tag key={idx} bgColor="bg-white" {...category} />
               ))}
             </div>
           </div>
