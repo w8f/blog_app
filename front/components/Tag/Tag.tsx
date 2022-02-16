@@ -8,7 +8,7 @@ const Tag: VFC<TagProps> = ({ bgColor, name, id }) => {
     bgColor;
   return (
     <Link href={`/category/${id}`} passHref>
-      <a className={className}>#{name}</a>
+      <button className={className}>#{name}</button>
     </Link>
   );
 };
