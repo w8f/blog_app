@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import { client } from "../../libs/client";
 import "highlight.js/styles/vs2015.css";
 import Header from "../../components/Header/Header";
@@ -21,10 +21,18 @@ const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
       <main className="bg-blue-50 mx-auto min-h-screen flex-1 h-full">
         <Header />
         <div className="mt-6 sm:mt-20 p-6 max-w-6xl container mx-auto">
-          <h1 className="font-bold text-3xl sm:text-center mb-10">
-            タグ: {category.name} の記事一覧
+          <div className="text-center pb-10">
+            <Image
+              src={category.image ? category.image.url : "/noimage.jpeg"}
+              alt="category image"
+              width="150"
+              height="150"
+            />
+          </div>
+          <h1 className="font-bold text-3xl text-center mb-10">
+            {category.name} の記事一覧
           </h1>
-          <ul className="sm:flex sm:flex-wrap w-full sm:justify-between sm:items-start">
+          <ul>
             {blogs.map((blog: Blog, index) => (
               <ArticleCard key={index} {...blog} />
             ))}
