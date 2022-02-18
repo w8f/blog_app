@@ -1,6 +1,6 @@
 # Hayakawa's Tech Blog
 
-Next.js × microCMS × tailwindcss を利用したJamstack構成の個人ブログアプリ。
+Next.js × microCMS × tailwindcss を利用した Jamstack 構成の個人ブログアプリ。
 
 ## Programming language / Library
 
@@ -26,14 +26,16 @@ Docker
 
 ## Components
 
-コンポーネントはstorybookで管理しています。\
-また、開発者以外でも見れるよう、vercel上に公開しました。
+コンポーネントは storybook で管理しています。\
+また、開発者以外でも見れるよう、vercel 上に公開しました。
 
 master branch's storybook: https://blog-ui-storybook.vercel.app/
 
 ## 機能要件
-- トップページ（記事一覧の表示）
-- 記事ページ(記事の詳細を表示)
+
+- 記事一覧の表示
+- 記事の詳細を表示(記事ページ)
+- タグ検索
 
 ## 環境構築
 

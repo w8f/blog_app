@@ -12,6 +12,7 @@ const Template: Story<TagProps> = (args) => <Tag {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  title: "default",
+  id: "1",
+  name: "default",
   bgColor: "bg-gray-200",
 };

@@ -8,9 +8,9 @@ import Tag from "../../components/Tag/Tag";
 
 const ArticleCard: VFC<Blog> = (blog) => {
   return (
-    <article className="text-center sm:w-1/2" key={blog.id}>
+    <article className="text-center text-gray-800" key={blog.id}>
       <Link href={`/blog/${blog.id}`} passHref>
-        <a className="block sm:justify-center rounded-2xl overflow-hidden shadow-lg sm:flex bg-white items-center m-4">
+        <a className="block rounded-2xl overflow-hidden shadow-lg bg-white items-center m-4 sm:justify-center xl:flex">
           <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
             {blog.categories[0].image.url && (
               <Image
@@ -25,7 +25,7 @@ const ArticleCard: VFC<Blog> = (blog) => {
               <Image src="/noimage.jpeg" alt="" width="100" height="100" />
             )}
           </div>
-          <div className="mt-4 sm:w-2/3">
+          <div className="mt-4 xl:w-2/3">
             <div className="mt-2 mb-2 text-center">
               <p className="font-semibold text-md overflow-ellipsis">
                 {blog.title}
@@ -46,7 +46,7 @@ const ArticleCard: VFC<Blog> = (blog) => {
             </div>
             <div className="px-6 pt-4 pb-2 text-center">
               {blog.categories.map((category, idx) => (
-                <Tag key={idx} title={category.name} bgColor="bg-gray-200" />
+                <Tag key={idx} bgColor="bg-gray-200" {...category} />
               ))}
             </div>
           </div>
