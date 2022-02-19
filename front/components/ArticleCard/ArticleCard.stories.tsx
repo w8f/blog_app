@@ -1,5 +1,5 @@
 import ArticleCard from "../ArticleCard/ArticleCard";
-import { Blog } from "../../interfaces/index";
+import { Blog, CategoryProps } from "../../interfaces/index";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -47,24 +47,5 @@ NoImage.args = {
   publishedAt: "2022-02-01",
   updatedAt: "2022-02-01",
   body: "<h1>hogehoge</h1>",
-  categories: [
-    {
-      id: "1",
-      name: "hoge",
-      image: {
-        url: "",
-        height: "100",
-        width: "100",
-      },
-    },
-    {
-      id: "2",
-      name: "fuga",
-      image: {
-        url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",
-        height: "100",
-        width: "100",
-      },
-    },
-  ],
+  categories: [],
 };

@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
         <div className="min-h-screen lg:flex">
           <div className="lg:w-1/12" />
           <div className="p-6 justify-center lg:flex lg:pt-20 lg:w-9/12">
-            <div className="text-gray-600 pb-8 sm:p-8">
+            <section className="text-gray-600 pb-8 sm:p-8">
               <h1 className="text-gray-800 font-semibold text-2xl mb-10 lg:text-center">
                 # タグ
               </h1>
@@ -32,8 +32,8 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
                   <Category key={index} {...category} />
                 ))}
               </ul>
-            </div>
-            <div className="sm:p-4">
+            </section>
+            <section className="sm:p-4">
               <h1 className="text-gray-800 font-bold text-3xl mb-10 lg:text-center">
                 記事一覧
               </h1>
@@ -42,7 +42,7 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
                   <ArticleCard key={index} {...blog} />
                 ))}
               </ul>
-            </div>
+            </section>
           </div>
           <div className="lg:w-2/12" />
         </div>
