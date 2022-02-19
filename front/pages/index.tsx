@@ -1,14 +1,13 @@
 import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import { Blog, CategoryProps } from "../interfaces/index";
 import { client } from "../libs/client";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Blog, Category } from "../interfaces/index";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
+import Category from "../components/Category/Category";
 
-type Props = { blogs: Blog[]; categories: Category[] };
+type Props = { blogs: Blog[]; categories: CategoryProps[] };
 
 const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
   return (
@@ -29,22 +28,8 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
                 # タグ
               </h1>
               <ul className="">
-                {categories.map((category: Category, index) => (
-                  <Link key={index} href={`/category/${category.id}`} passHref>
-                    <a className="flex items-center pb-1 pt-1 pl-4">
-                      <Image
-                        src={
-                          category.image ? category.image.url : "/noimage.jpeg"
-                        }
-                        alt="category image"
-                        width="50"
-                        height="50"
-                      />
-                      <li className="ml-4 font-serif" key={index}>
-                        #{category.name}
-                      </li>
-                    </a>
-                  </Link>
+                {categories.map((category: CategoryProps, index) => (
+                  <Category key={index} {...category} />
                 ))}
               </ul>
             </div>
@@ -74,7 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       blogs: blog.contents as Blog[],
-      categories: category.contents as Category[],
+      categories: category.contents as CategoryProps[],
     },
   };
 };

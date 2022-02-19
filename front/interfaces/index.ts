@@ -6,10 +6,10 @@ export type Blog = {
   publishedAt: string;
   updatedAt: string;
   body: string;
-  categories: Category[];
+  categories: CategoryProps[];
 };
 
-export type Category = {
+export type CategoryProps = {
   id: string;
   name: string;
   image: CategoryImage;
@@ -21,4 +21,4 @@ export type CategoryImage = {
   width: string;
 };
 
-export type TagProps = Category & { bgColor: string };
+export type TagProps = CategoryProps & { bgColor: string };
