@@ -61,7 +61,7 @@ const BlogId: NextPage<Props> = ({
               ))}
             </div>
           </div>
-          <div className="sm:flex h-full justify-center">
+          <div className="sm:flex h-full justify-center ">
             <section
               className="bg-white block rounded-xl mr-2 ml-2 p-4 sm:pt-12 sm:pb-12 shadow sm:w-3/5"
               dangerouslySetInnerHTML={{
@@ -138,7 +138,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   $("a").each((_, el) => {
-    $(el).addClass("ml-4 mr-4 mb-4 text-blue-800");
+    $(el).addClass("ml-4 mr-4 mb-4 text-blue-800 break-all");
   });
 
   $("p").each((_, el) => {
