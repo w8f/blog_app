@@ -1,14 +1,13 @@
 import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import { Blog, CategoryProps } from "../interfaces/index";
 import { client } from "../libs/client";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Blog, Category } from "../interfaces/index";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
+import Category from "../components/Category/Category";
 
-type Props = { blogs: Blog[]; categories: Category[] };
+type Props = { blogs: Blog[]; categories: CategoryProps[] };
 
 const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
   return (
@@ -24,31 +23,17 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
         <div className="min-h-screen lg:flex">
           <div className="lg:w-1/12" />
           <div className="p-6 justify-center lg:flex lg:pt-20 lg:w-9/12">
-            <div className="text-gray-600 pb-8 sm:p-8">
+            <section className="text-gray-600 pb-8 sm:p-8">
               <h1 className="text-gray-800 font-semibold text-2xl mb-10 lg:text-center">
                 # タグ
               </h1>
               <ul className="">
-                {categories.map((category: Category, index) => (
-                  <Link key={index} href={`/category/${category.id}`} passHref>
-                    <a className="flex items-center pb-1 pt-1 pl-4">
-                      <Image
-                        src={
-                          category.image ? category.image.url : "/noimage.jpeg"
-                        }
-                        alt="category image"
-                        width="50"
-                        height="50"
-                      />
-                      <li className="ml-4 font-serif" key={index}>
-                        #{category.name}
-                      </li>
-                    </a>
-                  </Link>
+                {categories.map((category: CategoryProps, index) => (
+                  <Category key={index} {...category} />
                 ))}
               </ul>
-            </div>
-            <div className="sm:p-4">
+            </section>
+            <section className="sm:p-4">
               <h1 className="text-gray-800 font-bold text-3xl mb-10 lg:text-center">
                 記事一覧
               </h1>
@@ -57,7 +42,7 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
                   <ArticleCard key={index} {...blog} />
                 ))}
               </ul>
-            </div>
+            </section>
           </div>
           <div className="lg:w-2/12" />
         </div>
@@ -74,7 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       blogs: blog.contents as Blog[],
-      categories: category.contents as Category[],
+      categories: category.contents as CategoryProps[],
     },
   };
 };

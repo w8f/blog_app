@@ -6,9 +6,9 @@ import "highlight.js/styles/vs2015.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
-import { Category, Blog } from "../../interfaces/index";
+import { CategoryProps, Blog } from "../../interfaces/index";
 
-type Props = { blogs: Blog[]; category: Category };
+type Props = { blogs: Blog[]; category: CategoryProps };
 
 const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
   return (
@@ -47,7 +47,7 @@ const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await client.get({ endpoint: "category" });
   const paths = data.contents.map(
-    (content: Category) => `/category/${content.id}`
+    (content: CategoryProps) => `/category/${content.id}`
   );
 
   return {
@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blogs: blog.contents as Blog[],
-      category: category as Category,
+      category: category as CategoryProps,
     },
   };
 };
