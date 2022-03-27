@@ -38,7 +38,7 @@ const BlogId: NextPage<Props> = ({
       </Head>
       <main className="bg-blue-50 mx-auto min-h-screen flex-1 h-full">
         <Header />
-        <div className="container mx-auto pb-8">
+        <div className="mx-auto pb-8">
           <div className="text-center mt-8 sm:mt-20 mb-8">
             <h1 className="text-3xl font-bold m-4">{blog.title}</h1>
             <div className="sm:flex justify-center items-center">
@@ -62,6 +62,7 @@ const BlogId: NextPage<Props> = ({
             </div>
           </div>
           <div className="sm:flex h-full justify-center ">
+            <div className="lg:w-3/12" />
             <section
               className="bg-white block rounded-xl mr-2 ml-2 p-4 sm:pt-12 sm:pb-12 shadow sm:w-3/5"
               dangerouslySetInnerHTML={{
@@ -71,7 +72,7 @@ const BlogId: NextPage<Props> = ({
             <aside className="hidden sm:block sm:visible m-8 w-96 box-border">
               <div className="h-full">
                 <div className="sticky top-10 flex flex-col">
-                  <div className=" bg-white mr-8 border-2 rounded-lg invisible sm:visible m-8">
+                  <div className=" bg-white border-2 rounded-lg invisible sm:visible">
                     <p className="text-center font-bold p-4 bg-blue-100">
                       <span className="mr-1">
                         <FontAwesomeIcon icon={faBook} />
@@ -89,6 +90,7 @@ const BlogId: NextPage<Props> = ({
                 </div>
               </div>
             </aside>
+            <div className="lg:w-3/12" />
           </div>
         </div>
       </main>
