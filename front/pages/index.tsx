@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
           <div className="xl:w-2/12" />
           <div className="pt-4 lg:flex lg:pt-20 xl:w-8/12">
             <section className="text-gray-600 sm:mt-20 pb-8 sm:p-8">
-              <ul className="">
+              <ul className="hidden sm:block">
                 {categories.map((category: CategoryProps, index) => (
                   <Category key={index} {...category} />
                 ))}
