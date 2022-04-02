@@ -10,8 +10,8 @@ const Category: VFC<CategoryProps> = ({ id, name, image }: CategoryProps) => {
         <Image
           src={image ? image.url : "/noimage.jpeg"}
           alt="category image"
-          width="50"
-          height="50"
+          width="30"
+          height="30"
         />
         <p className="ml-4 font-serif">#{name}</p>
       </a>

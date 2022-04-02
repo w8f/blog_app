@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      Body: ["YuGothic", "Yu Gothic", "Yu Gothic Medium"],
+    },
   },
   plugins: [],
 };

@@ -8,10 +8,11 @@ import Tag from "../../components/Tag/Tag";
 
 const ArticleCard: VFC<Blog> = ({ id, title, updatedAt, categories }: Blog) => {
   return (
-    <article className="text-center text-gray-800">
+    <article className="text-gray-800">
       <Link href={`/blog/${id}`} passHref>
-        <a className="block rounded-2xl overflow-hidden shadow-lg bg-white items-center m-4 sm:justify-center xl:flex">
-          <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
+        <a className="rounded-2xl overflow-hidden bg-white items-center m-4 flex">
+          <div className="hidden justify-center mt-4 ml-4 mr-2 text-center min-w-max">
+            {/* 画像の主張が強いので、一旦hiddenに */}
             <Image
               src={categories[0] ? categories[0].image.url : "/noimage.jpeg"}
               alt="category image"
@@ -19,9 +20,11 @@ const ArticleCard: VFC<Blog> = ({ id, title, updatedAt, categories }: Blog) => {
               height="100"
             />
           </div>
-          <div className="mt-4 xl:w-2/3">
+          <div className="mt-4 w-full">
             <div className="mt-2 mb-2 text-center">
-              <p className="font-semibold text-md overflow-ellipsis">{title}</p>
+              <p className="font-semibold text-md overflow-ellipsis ml-4 mr-4">
+                {title}
+              </p>
               <div className="flex justify-center items-center">
                 <span className="mr-1">
                   <FontAwesomeIcon icon={faArrowCircleUp} />
