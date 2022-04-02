@@ -20,7 +20,7 @@ const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full font-Body">
         <Header />
-        <div className="mt-6 sm:mt-20 p-6 max-w-6xl container mx-auto">
+        <div className="mt-6 sm:mt-20 max-w-6xl container mx-auto">
           <div className="text-center pb-10">
             <Image
               src={category.image ? category.image.url : "/noimage.jpeg"}

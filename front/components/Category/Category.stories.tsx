@@ -1,5 +1,4 @@
 import Category from "../Category/Category";
-import { CategoryProps } from "../../interfaces/index";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -7,11 +6,7 @@ export default {
   title: "Category",
 } as Meta;
 
-const Template: Story<CategoryProps> = (args) => <Category {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
+const defaultArgs = {
   id: "1",
   name: "TypeScript",
   image: {
@@ -21,9 +16,11 @@ Default.args = {
   },
 };
 
-export const NoImage = Template.bind({});
-
-NoImage.args = {
-  id: "2",
-  name: "NoImageCategory",
+export const Default: Story = () => {
+  return (
+    <>
+      <h1>Default</h1>
+      <Category {...defaultArgs} />
+    </>
+  );
 };

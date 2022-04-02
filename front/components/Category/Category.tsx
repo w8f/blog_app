@@ -1,9 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { VFC } from "react";
 import { CategoryProps } from "../../interfaces";
 
-const Category: VFC<CategoryProps> = ({ id, name, image }: CategoryProps) => {
+const Category: VFC<CategoryProps> = ({ id, name }: CategoryProps) => {
   return (
     <Link href={`/category/${id}`} passHref>
       <a className="flex items-center pb-1 pt-1 pl-4 hover:text-blue-800 font-semibold">
