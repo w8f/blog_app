@@ -8,33 +8,22 @@ import Tag from "../../components/Tag/Tag";
 
 const ArticleCard: VFC<Blog> = ({ id, title, updatedAt, categories }: Blog) => {
   return (
-    <article className="text-center text-gray-800">
+    <article className="text-gray-800 m-3">
       <Link href={`/blog/${id}`} passHref>
-        <a className="block rounded-2xl overflow-hidden shadow-lg bg-white items-center m-4 sm:justify-center xl:flex">
-          <div className="justify-center mt-4 ml-2 mr-2 text-center min-w-max">
-            <Image
-              src={categories[0] ? categories[0].image.url : "/noimage.jpeg"}
-              alt="category image"
-              width="100"
-              height="100"
-            />
-          </div>
-          <div className="mt-4 xl:w-2/3">
-            <div className="mt-2 mb-2 text-center">
-              <p className="font-semibold text-md overflow-ellipsis">{title}</p>
-              <div className="flex justify-center items-center">
-                <span className="mr-1">
-                  <FontAwesomeIcon icon={faArrowCircleUp} />
-                </span>
-                <p className="text-sm">
-                  {updatedAt.match(/\d+-\d+-\d+/) + "に更新"}
-                </p>
+        <a className="rounded-2xl overflow-hidden bg-white items-center m-4 flex h-full hover:shadow-xl hover:ease-in duration-300 hover:text-blue-800">
+          <div className="w-full">
+            <div className="mt-2 ml-4 mr-4">
+              <p className="text-sm text-right m-2 text-gray-800">
+                {updatedAt.match(/\d+-\d+-\d+/)}
+              </p>
+              <p className="font-semibold text-md m-3 overflow-ellipsis">
+                {title}
+              </p>
+              <div className="mt-10 ml-2">
+                {categories.map((category, idx) => (
+                  <Tag key={idx} bgColor="bg-gray-200" {...category} />
+                ))}
               </div>
-            </div>
-            <div className="px-6 pt-4 pb-2 text-center">
-              {categories.map((category, idx) => (
-                <Tag key={idx} bgColor="bg-gray-200" {...category} />
-              ))}
             </div>
           </div>
         </a>

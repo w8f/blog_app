@@ -6,6 +6,8 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
 import Category from "../components/Category/Category";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBlog } from "@fortawesome/free-solid-svg-icons";
 
 type Props = { blogs: Blog[]; categories: CategoryProps[] };
 
@@ -18,15 +20,12 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex-1 overflow-x-hidden bg-blue-50 block justify-center items-center">
+      <main className="flex-1 overflow-x-hidden bg-stone-100 block justify-center items-center font-Body">
         <Header />
         <div className="min-h-screen lg:flex">
-          <div className="lg:w-1/12" />
-          <div className="p-6 justify-center lg:flex lg:pt-20 lg:w-9/12">
-            <section className="text-gray-600 pb-8 sm:p-8">
-              <h1 className="text-gray-800 font-semibold text-2xl mb-10 lg:text-center">
-                # タグ
-              </h1>
+          <div className="xl:w-2/12" />
+          <div className="p-6 lg:flex lg:pt-20 xl:w-8/12">
+            <section className="text-gray-600 sm:mt-20 pb-8 sm:p-8">
               <ul className="">
                 {categories.map((category: CategoryProps, index) => (
                   <Category key={index} {...category} />
@@ -34,17 +33,18 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
               </ul>
             </section>
             <section className="sm:p-4">
-              <h1 className="text-gray-800 font-bold text-3xl mb-10 lg:text-center">
-                記事一覧
-              </h1>
-              <ul>
+              <div className="flex justify-center items-center mb-10">
+                <FontAwesomeIcon icon={faBlog} size={"3x"} />
+                <h1 className="font-bold text-3xl text-blue-800 ml-2">Tech</h1>
+              </div>
+              <ul className="sm:grid sm:grid-cols-2">
                 {blogs.map((blog: Blog, index) => (
                   <ArticleCard key={index} {...blog} />
                 ))}
               </ul>
             </section>
           </div>
-          <div className="lg:w-2/12" />
+          <div className="xl:w-2/12" />
         </div>
       </main>
       <Footer />
