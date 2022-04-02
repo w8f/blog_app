@@ -1,5 +1,4 @@
 import ArticleCard from "../ArticleCard/ArticleCard";
-import { Blog, CategoryProps } from "../../interfaces/index";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -7,13 +6,23 @@ export default {
   title: "ArticleCard",
 } as Meta;
 
-const Template: Story<Blog> = (args) => <ArticleCard {...args} />;
+const image = {
+  url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",
+  height: "100",
+  width: "100",
+};
 
-export const Default = Template.bind({});
+const tooManyCategories = [...Array(15)].map((_, i) => {
+  return {
+    id: "" + i,
+    name: "category",
+    image: image,
+  };
+});
 
-Default.args = {
+const defaultArgs = {
   id: "1",
-  title: "default blog title",
+  title: "default blog title (Assume 2 lines at most)",
   publishedAt: "2022-02-01",
   updatedAt: "2022-02-01",
   body: "<h1>hogehoge</h1>",
@@ -21,31 +30,61 @@ Default.args = {
     {
       id: "1",
       name: "hoge",
-      image: {
-        url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",
-        height: "100",
-        width: "100",
-      },
+      image: image,
     },
     {
       id: "2",
       name: "fuga",
-      image: {
-        url: "https://images.microcms-assets.io/assets/797f5c01c5ba4a20a0888ddda0fecbe1/f2cbae8993c44d0896f8792496416b59/nextjsimage.png",
-        height: "100",
-        width: "100",
-      },
+      image: image,
     },
   ],
 };
 
-export const NoImage = Template.bind({});
-
-NoImage.args = {
-  id: "2",
-  title: "No image blog title",
+const longTitleArgs = {
+  id: "1",
+  title:
+    "This is a very long title. It is very, very long. There is more to come. It's a really, really long title. It will go on a little bit longer. It's almost over. Almost there. It's almost over.",
   publishedAt: "2022-02-01",
   updatedAt: "2022-02-01",
   body: "<h1>hogehoge</h1>",
-  categories: [],
+  categories: [
+    {
+      id: "1",
+      name: "hoge",
+      image: image,
+    },
+    {
+      id: "2",
+      name: "fuga",
+      image: image,
+    },
+  ],
+};
+
+const manyCategory = {
+  id: "1",
+  title: "Too many category case",
+  publishedAt: "2022-02-01",
+  updatedAt: "2022-02-01",
+  body: "<h1>hogehoge</h1>",
+  categories: tooManyCategories,
+};
+
+export const Default: Story = () => {
+  return (
+    <>
+      <dt>Default</dt>
+      <dd style={{ margin: "2px" }}>
+        <ArticleCard {...defaultArgs} />
+      </dd>
+      <dt>LongTitle</dt>
+      <dd style={{ margin: "2px" }}>
+        <ArticleCard {...longTitleArgs} />
+      </dd>
+      <dt>TooManyCategory</dt>
+      <dd style={{ margin: "2px" }}>
+        <ArticleCard {...manyCategory} />
+      </dd>
+    </>
+  );
 };

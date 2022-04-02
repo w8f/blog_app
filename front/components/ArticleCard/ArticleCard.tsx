@@ -1,16 +1,13 @@
 import { VFC } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 import { Blog } from "../../interfaces/index";
 import Tag from "../../components/Tag/Tag";
 
 const ArticleCard: VFC<Blog> = ({ id, title, updatedAt, categories }: Blog) => {
   return (
-    <article className="text-gray-800 m-3">
+    <article className="text-gray-800 m-3 max-w-md">
       <Link href={`/blog/${id}`} passHref>
-        <a className="rounded-2xl overflow-hidden bg-white items-center m-4 flex h-full hover:shadow-xl hover:ease-in duration-300 hover:text-blue-800">
+        <a className="rounded-2xl overflow-hidden bg-white items-center m-4 flex h-full hover:shadow-xl hover:ease-in duration-300 hover:text-blue-800 border-2">
           <div className="w-full">
             <div className="mt-2 ml-4 mr-4">
               <p className="text-sm text-right m-2 text-gray-800">
