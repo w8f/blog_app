@@ -8,9 +8,17 @@ import Footer from "../../components/Footer/Footer";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import { CategoryProps, Blog } from "../../interfaces/index";
 
-type Props = { blogs: Blog[]; category: CategoryProps };
+type Props = {
+  blogs: Blog[];
+  category: CategoryProps;
+  categories: CategoryProps[];
+};
 
-const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
+const CategoryId: NextPage<Props> = ({
+  blogs,
+  category,
+  categories,
+}: Props) => {
   return (
     <div className="box-border overflow-clip">
       <Head>
@@ -19,7 +27,7 @@ const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full font-Body">
-        <Header />
+        <Header categories={categories} />
         <div className="mt-6 sm:mt-20 max-w-6xl container mx-auto">
           <div className="text-center pb-10">
             <Image
@@ -67,11 +75,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const category = await client.get({
     endpoint: `category/${id}`,
   });
+  const categories = await client.get({ endpoint: "category" });
 
   return {
     props: {
       blogs: blog.contents as Blog[],
       category: category as CategoryProps,
+      categories: categories.contents as CategoryProps[],
     },
   };
 };
