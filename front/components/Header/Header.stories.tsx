@@ -6,8 +6,25 @@ export default {
   title: "Header",
 } as Meta;
 
-const Template: Story = (args) => <Header {...args} />;
+const categories = [...Array(10)].map((_, idx) => {
+  return {
+    id: `category-${idx}`,
+    name: `category ${idx}`,
+    image: {
+      url: "/",
+      height: "300",
+      width: "300",
+    },
+  };
+});
 
-export const Default = Template.bind({});
-
-Default.args = {};
+export const Default: Story = () => {
+  return (
+    <div style={{ margin: "2px" }}>
+      <dt>Default</dt>
+      <dd>
+        <Header categories={categories} />
+      </dd>
+    </div>
+  );
+};
