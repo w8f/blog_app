@@ -16,6 +16,7 @@ export const parameters = {
     },
   },
   viewport: {
-    defaultViewPort: INITIAL_VIEWPORTS,
+    // defaultViewPort: INITIAL_VIEWPORTS,
+    viewports: INITIAL_VIEWPORTS,
   },
 };

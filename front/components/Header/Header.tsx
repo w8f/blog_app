@@ -21,7 +21,7 @@ const Header: VFC<Props> = ({ categories }) => {
   return (
     <div className="bg-white border-b-2 h-14 flex">
       <div className="lg:w-2/12" />
-      <div className="w-full lg:w-6/12">
+      <div className="lg:w-6/12">
         <div className="flex items-center h-full">
           <HeaderBtn setOpenMenuBar={setOpenMenuBar} />
           <Link href="/">
