@@ -12,6 +12,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Tag from "../../components/Tag/Tag";
 import { Blog } from "../../interfaces/index";
+import { CategoryProps } from "../../interfaces/index";
 
 type tableOfContent = {
   title: string;
@@ -20,12 +21,14 @@ type tableOfContent = {
 
 type Props = {
   blog: Blog;
+  categories: CategoryProps[];
   highlightedBody: string;
   tableOfContents: tableOfContent[];
 };
 
 const BlogId: NextPage<Props> = ({
   blog,
+  categories,
   highlightedBody,
   tableOfContents,
 }) => {
@@ -37,7 +40,7 @@ const BlogId: NextPage<Props> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full">
-        <Header />
+        <Header categories={categories} />
         <div className="mx-auto pb-8 font-Body">
           <div className="text-center mt-8 sm:mt-20 mb-8">
             <h1 className="text-3xl font-bold m-4">{blog.title}</h1>
@@ -112,6 +115,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string;
   const data = await client.get({ endpoint: "blog", contentId: id });
+  const categories = await client.get({ endpoint: "category" });
 
   const $ = cheerio.load(data.body);
   const tableOfContents: tableOfContent[] = [];
@@ -166,6 +170,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       blog: data,
+      categories: categories.contents as CategoryProps[],
       highlightedBody: $.html(),
       tableOfContents,
     },

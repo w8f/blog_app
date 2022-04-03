@@ -6,11 +6,20 @@ import "highlight.js/styles/vs2015.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ArticleCard from "../../components/ArticleCard/ArticleCard";
+import Category from "../../components/Category/Category";
 import { CategoryProps, Blog } from "../../interfaces/index";
 
-type Props = { blogs: Blog[]; category: CategoryProps };
+type Props = {
+  blogs: Blog[];
+  category: CategoryProps;
+  categories: CategoryProps[];
+};
 
-const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
+const CategoryId: NextPage<Props> = ({
+  blogs,
+  category,
+  categories,
+}: Props) => {
   return (
     <div className="box-border overflow-clip">
       <Head>
@@ -19,24 +28,37 @@ const CategoryId: NextPage<Props> = ({ blogs, category }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full font-Body">
-        <Header />
-        <div className="mt-6 sm:mt-20 max-w-6xl container mx-auto">
-          <div className="text-center pb-10">
-            <Image
-              src={category.image ? category.image.url : "/noimage.jpeg"}
-              alt="category image"
-              width="150"
-              height="150"
-            />
+        <Header categories={categories} />
+        <div className="mt-6 sm:mt-20 min-h-screen lg:flex">
+          <div className="xl:w-2/12" />
+          <div className="xl:w-8/12 lg:flex">
+            <section className="text-gray-600 sm:mt-20 pb-8 sm:p-8">
+              <ul className="hidden sm:block">
+                {categories.map((category: CategoryProps, index) => (
+                  <Category key={index} {...category} />
+                ))}
+              </ul>
+            </section>
+            <div className="pb-10">
+              <div className="text-center">
+                <Image
+                  src={category.image ? category.image.url : "/noimage.jpeg"}
+                  alt="category image"
+                  width="150"
+                  height="150"
+                />
+              </div>
+              <h1 className="font-bold text-3xl text-center mt-10 mb-10">
+                {category.name} の記事一覧
+              </h1>
+              <ul className="sm:grid sm:grid-cols-2">
+                {blogs.map((blog: Blog, index) => (
+                  <ArticleCard key={index} {...blog} />
+                ))}
+              </ul>
+            </div>
           </div>
-          <h1 className="font-bold text-3xl text-center mb-10">
-            {category.name} の記事一覧
-          </h1>
-          <ul className="sm:grid sm:grid-cols-2">
-            {blogs.map((blog: Blog, index) => (
-              <ArticleCard key={index} {...blog} />
-            ))}
-          </ul>
+          <div className="xl:w-2/12" />
         </div>
       </main>
       <Footer />
@@ -67,11 +89,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const category = await client.get({
     endpoint: `category/${id}`,
   });
+  const categories = await client.get({ endpoint: "category" });
 
   return {
     props: {
       blogs: blog.contents as Blog[],
       category: category as CategoryProps,
+      categories: categories.contents as CategoryProps[],
     },
   };
 };

@@ -1,13 +1,13 @@
 import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
-import { Blog, CategoryProps } from "../interfaces/index";
-import { client } from "../libs/client";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import ArticleCard from "../components/ArticleCard/ArticleCard";
-import Category from "../components/Category/Category";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBlog } from "@fortawesome/free-solid-svg-icons";
+import { Blog, CategoryProps } from "../interfaces/index";
+import { client } from "../libs/client";
+import ArticleCard from "../components/ArticleCard/ArticleCard";
+import Category from "../components/Category/Category";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
 
 type Props = { blogs: Blog[]; categories: CategoryProps[] };
 
@@ -21,12 +21,12 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
       </Head>
 
       <main className="flex-1 overflow-x-hidden bg-stone-100 block justify-center items-center font-Body">
-        <Header />
+        <Header categories={categories} />
         <div className="min-h-screen lg:flex">
           <div className="xl:w-2/12" />
           <div className="pt-4 lg:flex lg:pt-20 xl:w-8/12">
             <section className="text-gray-600 sm:mt-20 pb-8 sm:p-8">
-              <ul className="">
+              <ul className="hidden sm:block">
                 {categories.map((category: CategoryProps, index) => (
                   <Category key={index} {...category} />
                 ))}
