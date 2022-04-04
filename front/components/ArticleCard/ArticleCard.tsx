@@ -3,7 +3,12 @@ import Link from "next/link";
 import { Blog } from "../../interfaces/index";
 import Tag from "../../components/Tag/Tag";
 
-const ArticleCard: VFC<Blog> = ({ id, title, updatedAt, categories }: Blog) => {
+const ArticleCard: VFC<Blog> = ({
+  id,
+  title,
+  publishedAt,
+  categories,
+}: Blog) => {
   return (
     <article className="text-gray-800 m-3 max-w-md">
       <Link href={`/blog/${id}`} passHref>
@@ -11,7 +16,7 @@ const ArticleCard: VFC<Blog> = ({ id, title, updatedAt, categories }: Blog) => {
           <div className="w-full">
             <div className="mt-2 ml-4 mr-4">
               <p className="text-sm text-right m-2 text-gray-800">
-                {updatedAt.match(/\d+-\d+-\d+/)}
+                {publishedAt.match(/\d+-\d+-\d+/)}
               </p>
               <p className="font-semibold text-md m-3 overflow-ellipsis">
                 {title}
