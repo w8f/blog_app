@@ -144,7 +144,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   $("a").each((_, el) => {
-    $(el).addClass("ml-4 mr-4 mb-4 text-blue-800 break-all");
+    $(el).addClass("mb-4 text-blue-800 break-all");
   });
 
   $("p").each((_, el) => {

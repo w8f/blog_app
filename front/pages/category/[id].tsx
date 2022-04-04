@@ -29,17 +29,17 @@ const CategoryId: NextPage<Props> = ({
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full font-Body">
         <Header categories={categories} />
-        <div className="mt-6 sm:mt-20 min-h-screen lg:flex">
-          <div className="xl:w-2/12" />
-          <div className="xl:w-8/12 lg:flex">
-            <section className="text-gray-600 sm:mt-20 pb-8 sm:p-8">
-              <ul className="hidden sm:block">
+        <div className="mt-6 lg:mt-20 min-h-screen lg:flex">
+          <div className="lg:w-2/12" />
+          <div className="lg:w-8/12 lg:flex">
+            <section className="hidden lg:block text-gray-600 lg:mt-20 pb-8 lg:p-8">
+              <ul className="">
                 {categories.map((category: CategoryProps, index) => (
                   <Category key={index} {...category} />
                 ))}
               </ul>
             </section>
-            <div className="pb-10">
+            <section className="pb-10 w-full">
               <div className="text-center">
                 <Image
                   src={category.image ? category.image.url : "/noimage.jpeg"}
@@ -56,9 +56,9 @@ const CategoryId: NextPage<Props> = ({
                   <ArticleCard key={index} {...blog} />
                 ))}
               </ul>
-            </div>
+            </section>
           </div>
-          <div className="xl:w-2/12" />
+          <div className="lg:w-2/12" />
         </div>
       </main>
       <Footer />

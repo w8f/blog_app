@@ -14,7 +14,7 @@ const MenuBtn: VFC<Props> = ({ setOpenMenuBar }) => {
   return (
     <>
       <button
-        className="border-r-2 sm:hidden w-14 h-full"
+        className="border-r-2 lg:hidden w-14 h-full"
         onClick={() => setOpenMenuBar((prev) => !prev)}
       >
         <FontAwesomeIcon icon={faBars} />

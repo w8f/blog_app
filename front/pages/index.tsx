@@ -23,17 +23,17 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
       <main className="flex-1 overflow-x-hidden bg-stone-100 block justify-center items-center font-Body">
         <Header categories={categories} />
         <div className="min-h-screen lg:flex">
-          <div className="xl:w-2/12" />
-          <div className="pt-4 lg:flex lg:pt-20 xl:w-8/12">
-            <section className="text-gray-600 sm:mt-20 pb-8 sm:p-8">
-              <ul className="hidden sm:block">
+          <div className="lg:w-2/12" />
+          <div className="pt-4 lg:flex lg:pt-20 lg:w-8/12">
+            <section className="hidden lg:block text-gray-600 lg:mt-20 lg:pb-8 lg:p-8">
+              <ul className="">
                 {categories.map((category: CategoryProps, index) => (
                   <Category key={index} {...category} />
                 ))}
               </ul>
             </section>
             <section className="sm:p-4">
-              <div className="flex justify-center items-center mb-10">
+              <div className="flex justify-center items-center mt-6 md:mt-12 mb-10">
                 <FontAwesomeIcon icon={faBlog} size={"3x"} />
                 <h1 className="font-bold text-3xl text-blue-800 ml-2">Tech</h1>
               </div>
@@ -44,7 +44,7 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
               </ul>
             </section>
           </div>
-          <div className="xl:w-2/12" />
+          <div className="lg:w-2/12" />
         </div>
       </main>
       <Footer />
