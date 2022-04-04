@@ -33,7 +33,7 @@ const Header: VFC<Props> = ({ categories }) => {
             <FontAwesomeIcon icon={faGithub} size="2x" />
           </a>
         </div>
-        <div className="z-10 absolute w-full opacity-90">
+        <div className="z-10 lg:hidden absolute w-full opacity-90">
           {openMenuBar && <MenuBar categories={categories} />}
         </div>
       </div>
