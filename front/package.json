@@ -2,7 +2,7 @@
   "name": "front",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev & start-storybook -s public -p 6006",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

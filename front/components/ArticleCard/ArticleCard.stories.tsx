@@ -70,6 +70,15 @@ const manyCategory = {
   categories: tooManyCategories,
 };
 
+const NoCategoryArgs = {
+  id: "1",
+  title: "No category case",
+  publishedAt: "2022-02-01",
+  updatedAt: "2022-02-01",
+  body: "<h1>hogehoge</h1>",
+  categories: [],
+};
+
 export const Default: Story = () => {
   return (
     <>
@@ -77,13 +86,38 @@ export const Default: Story = () => {
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...defaultArgs} />
       </dd>
+    </>
+  );
+};
+
+export const LongTitle: Story = () => {
+  return (
+    <>
       <dt>LongTitle</dt>
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...longTitleArgs} />
       </dd>
+    </>
+  );
+};
+
+export const TooManyCategory: Story = () => {
+  return (
+    <>
       <dt>TooManyCategory</dt>
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...manyCategory} />
+      </dd>
+    </>
+  );
+};
+
+export const NoCategory: Story = () => {
+  return (
+    <>
+      <dt>NoCategory</dt>
+      <dd style={{ margin: "2px" }}>
+        <ArticleCard {...NoCategoryArgs} />
       </dd>
     </>
   );
