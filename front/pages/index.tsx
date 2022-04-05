@@ -5,9 +5,7 @@ import { faBlog } from "@fortawesome/free-solid-svg-icons";
 import { Blog, CategoryProps } from "../interfaces/index";
 import { client } from "../libs/client";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
-import Category from "../components/Category/Category";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 type Props = { blogs: Blog[]; categories: CategoryProps[] };
 
@@ -21,33 +19,18 @@ const Home: NextPage<Props> = ({ blogs, categories }: Props) => {
       </Head>
 
       <main className="flex-1 overflow-x-hidden bg-stone-100 block justify-center items-center font-Body">
-        <Header categories={categories} />
-        <div className="min-h-screen lg:flex">
-          <div className="lg:w-2/12" />
-          <div className="pt-4 lg:flex lg:pt-20 lg:w-8/12">
-            <section className="hidden lg:block text-gray-600 lg:mt-20 lg:pb-8 lg:p-8">
-              <ul className="">
-                {categories.map((category: CategoryProps, index) => (
-                  <Category key={index} {...category} />
-                ))}
-              </ul>
-            </section>
-            <section className="sm:p-4">
-              <div className="flex justify-center items-center mt-6 md:mt-12 mb-10">
-                <FontAwesomeIcon icon={faBlog} size={"3x"} />
-                <h1 className="font-bold text-3xl text-blue-800 ml-2">Tech</h1>
-              </div>
-              <ul className="sm:grid sm:grid-cols-2">
-                {blogs.map((blog: Blog, index) => (
-                  <ArticleCard key={index} {...blog} />
-                ))}
-              </ul>
-            </section>
+        <Layout categories={categories}>
+          <div className="flex justify-center items-center mt-6 md:mt-12 mb-10">
+            <FontAwesomeIcon icon={faBlog} size={"3x"} />
+            <h1 className="font-bold text-3xl text-blue-800 ml-2">Tech</h1>
           </div>
-          <div className="lg:w-2/12" />
-        </div>
+          <ul className="sm:grid sm:grid-cols-2">
+            {blogs.map((blog: Blog, index) => (
+              <ArticleCard key={index} {...blog} />
+            ))}
+          </ul>
+        </Layout>
       </main>
-      <Footer />
     </div>
   );
 };
