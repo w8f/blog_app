@@ -1,3 +1,4 @@
+import "zenn-content-css";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,7 +42,7 @@ const BlogId: NextPage<Props> = ({
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full">
         <Header categories={categories} />
-        <div className="mx-auto pb-8 font-Body">
+        <div className="mx-auto pb-8 font-Body ">
           <div className="text-center mt-8 sm:mt-20 mb-8">
             <h1 className="text-3xl font-bold m-4">{blog.title}</h1>
             <div className="sm:flex justify-center items-center">
@@ -64,7 +65,7 @@ const BlogId: NextPage<Props> = ({
               ))}
             </div>
           </div>
-          <div className="sm:flex h-full justify-center ">
+          <div className="sm:flex h-full justify-center znc">
             <div className="lg:w-3/12" />
             <section
               className="bg-white block rounded-xl mr-2 ml-2 p-4 sm:pt-12 sm:pb-12 shadow sm:w-3/5"
@@ -118,6 +119,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const categories = await client.get({ endpoint: "category" });
 
   const $ = cheerio.load(data.body);
+  console.log(data.body);
   const tableOfContents: tableOfContent[] = [];
 
   $("pre code").each((_, el) => {
@@ -126,9 +128,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     $(el).addClass("hljs m-2 mb-6");
   });
 
-  $("h1").each((_, el) => {
-    $(el).addClass("text-4xl m-1");
-  });
+  // $("h1").each((_, el) => {
+  //   $(el).addClass("text-4xl m-1");
+  // });
 
   $("h2").each((_, el) => {
     // 目次用
@@ -148,7 +150,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   $("p").each((_, el) => {
-    $(el).addClass("ml-4 mr-4 mt-2 mb-4 text-gray-800");
+    $(el).addClass("ml-2 mr-4 mt-2 mb-4 text-gray-800");
   });
 
   $("ul").each((_, el) => {
@@ -157,10 +159,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   $("ol").each((_, el) => {
     $(el).addClass("ml-12 mt-4 mb-2 pd-1 list-decimal text-gray-800");
-  });
-
-  $("blockquote").each((_, el) => {
-    $(el).addClass("border-l-4 mr-4 bg-gray-50 pl-8 text-gray-600");
   });
 
   $("br").each((_, el) => {
