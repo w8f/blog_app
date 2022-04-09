@@ -1,10 +1,10 @@
-import { NextPage, GetStaticProps } from "next";
+import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { Blog, CategoryProps } from "../interfaces/index";
 import { client } from "../libs/client";
 import Layout from "../components/Layout/Layout";
-import { perpage } from "../constants";
 import Posts from "../components/Posts/Posts";
+import { perpage } from "../constants";
 
 type Props = {
   blogs: Blog[];
@@ -30,11 +30,26 @@ const Home: NextPage<Props> = ({ blogs, categories, totalCount }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const blog = await client.get({ endpoint: "blog" });
+  const paths = [...Array(Math.ceil(blog.totalCount / perpage))].map(
+    (_, page: number) => {
+      return `/${page + 1}`;
+    }
+  );
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id as string;
   const blog = await client.get({
     endpoint: "blog",
     queries: {
-      offset: 0,
+      offset: (Number(id) - 1) * perpage,
       limit: perpage,
     },
   });
