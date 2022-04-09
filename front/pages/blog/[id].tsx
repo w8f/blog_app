@@ -6,6 +6,7 @@ import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { client } from "../../libs/client";
+import { fetchAll } from "../../utils/util";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
@@ -104,8 +105,8 @@ const BlogId: NextPage<Props> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await client.get({ endpoint: "blog" });
-  const paths = data.contents.map((content: Blog) => `/blog/${content.id}`);
+  const data = await fetchAll(0, 10, "blog");
+  const paths = data.map((content: Blog) => `/blog/${content.id}`);
 
   return {
     paths,
