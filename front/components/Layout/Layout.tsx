@@ -15,7 +15,9 @@ type Props = {
 const Layout: VFC<Props> = ({ categories, children }) => {
   return (
     <>
-      <Header categories={categories} />
+      <div className="sticky top-0 flex flex-col z-50">
+        <Header categories={categories} />
+      </div>
       <div className="min-h-screen lg:flex">
         <div className="lg:w-2/12" />
         <div className="pt-4 lg:flex lg:pt-20 lg:w-8/12">

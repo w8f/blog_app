@@ -42,7 +42,9 @@ const BlogId: NextPage<Props> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-stone-100 mx-auto min-h-screen flex-1 h-full">
-        <Header categories={categories} />
+        <div className="sticky top-0 flex flex-col z-50">
+          <Header categories={categories} />
+        </div>
         <div className="mx-auto pb-8 font-Body ">
           <div className="text-center mt-8 sm:mt-20 mb-8">
             <h1 className="text-3xl font-bold m-4">{blog.title}</h1>
@@ -76,7 +78,7 @@ const BlogId: NextPage<Props> = ({
             ></section>
             <aside className="hidden sm:block sm:visible m-8 w-96 box-border">
               <div className="h-full">
-                <div className="sticky top-10 flex flex-col">
+                <div className="sticky top-20 flex flex-col">
                   <div className=" bg-white border-2 rounded-lg invisible sm:visible">
                     <p className="text-center font-bold p-4 bg-blue-100">
                       <span className="mr-1">

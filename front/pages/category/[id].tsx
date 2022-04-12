@@ -26,7 +26,7 @@ const CategoryId: NextPage<Props> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex-1 overflow-x-hidden bg-stone-100 block justify-center items-center font-Body">
+      <main className="flex-1 bg-stone-100 block justify-center items-center font-Body">
         <Layout categories={categories}>
           <div className="text-center">
             <Image
