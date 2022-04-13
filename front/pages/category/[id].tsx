@@ -28,7 +28,7 @@ const CategoryId: NextPage<Props> = ({
 
       <main className="flex-1 bg-stone-100 block justify-center items-center font-Body">
         <Layout categories={categories}>
-          <div className="text-center">
+          <div className="text-center pt-8">
             <Image
               src={category.image ? category.image.url : "/noimage.jpeg"}
               alt="category image"
