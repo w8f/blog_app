@@ -22,7 +22,7 @@ const Layout: VFC<Props> = ({ categories, children }) => {
         <div className="lg:w-2/12" />
         <div className="pt-4 lg:flex lg:pt-20 lg:w-8/12">
           <section className="hidden lg:block text-gray-600 lg:mt-20 lg:pb-8 lg:p-8">
-            <ul className="">
+            <ul className="sticky top-1/4 flex flex-col">
               {categories.map((category: CategoryProps, index) => (
                 <Category key={index} {...category} />
               ))}
