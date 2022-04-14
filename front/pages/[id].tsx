@@ -21,7 +21,7 @@ const Home: NextPage<Props> = ({ blogs, categories, totalCount }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex-1 overflow-x-hidden bg-stone-100 block justify-center items-center font-Body">
+      <main className="flex-1 bg-stone-100 block justify-center items-center font-Body">
         <Layout categories={categories}>
           <Posts totalCount={totalCount} blogs={blogs} />
         </Layout>
