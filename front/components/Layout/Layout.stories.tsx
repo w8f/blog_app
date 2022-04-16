@@ -20,13 +20,13 @@ const categories = [...Array(10)].map((_, idx) => {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Layout categories={categories}>
           <div>子コンポーネントはここに表示される</div>
         </Layout>
       </dd>
-    </>
+    </dl>
   );
 };

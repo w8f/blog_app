@@ -18,11 +18,11 @@ const defaultArgs = {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Category {...defaultArgs} />
       </dd>
-    </>
+    </dl>
   );
 };

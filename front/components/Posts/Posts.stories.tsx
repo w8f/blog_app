@@ -29,11 +29,11 @@ const blogs = [...Array(8)].map((_, i) => {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Post totalCount={blogs.length} blogs={blogs} />
       </dd>
-    </>
+    </dl>
   );
 };

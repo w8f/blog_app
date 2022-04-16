@@ -20,11 +20,11 @@ const categories = [...Array(10)].map((_, idx) => {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Header categories={categories} />
       </dd>
-    </>
+    </dl>
   );
 };

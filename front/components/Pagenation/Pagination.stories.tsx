@@ -8,11 +8,11 @@ export default {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Pagenation totalCount={40} />
       </dd>
-    </>
+    </dl>
   );
 };
