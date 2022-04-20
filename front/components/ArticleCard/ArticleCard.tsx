@@ -1,9 +1,9 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { Blog } from "../../interfaces/index";
-import Tag from "../../components/Tag/Tag";
+import { Blog } from "../../interfaces";
+import { Tag } from "../Tag";
 
-const ArticleCard: VFC<Blog> = ({
+export const ArticleCard: VFC<Blog> = ({
   id,
   title,
   publishedAt,
@@ -33,5 +33,3 @@ const ArticleCard: VFC<Blog> = ({
     </article>
   );
 };
-
-export default ArticleCard;

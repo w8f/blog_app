@@ -1,8 +1,8 @@
 import { VFC } from "react";
-import { CategoryProps } from "../../interfaces/index";
-import Category from "../../components/Category/Category";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import { CategoryProps } from "../../interfaces";
+import { Category } from "../Category";
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 type Props = {
   categories: CategoryProps[];
@@ -12,7 +12,7 @@ type Props = {
 /**
  * 共通レイアウト用コンポーネント
  */
-const Layout: VFC<Props> = ({ categories, children }) => {
+export const Layout: VFC<Props> = ({ categories, children }) => {
   return (
     <>
       <div className="sticky top-0 flex flex-col z-50">
@@ -36,5 +36,3 @@ const Layout: VFC<Props> = ({ categories, children }) => {
     </>
   );
 };
-
-export default Layout;

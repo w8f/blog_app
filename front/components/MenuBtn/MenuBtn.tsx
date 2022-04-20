@@ -10,7 +10,7 @@ type Props = {
  * Menu Button Component
  * @param setOpenMenuBar メニューバーの表示可否
  */
-const MenuBtn: VFC<Props> = ({ setOpenMenuBar }) => {
+export const MenuBtn: VFC<Props> = ({ setOpenMenuBar }) => {
   return (
     <>
       <button
@@ -22,5 +22,3 @@ const MenuBtn: VFC<Props> = ({ setOpenMenuBar }) => {
     </>
   );
 };
-
-export default MenuBtn;

@@ -1,4 +1,4 @@
-import MenuBtn from "../MenuBtn/MenuBtn";
+import { MenuBtn } from "../MenuBtn";
 import { Meta, Story } from "@storybook/react";
 
 export default {

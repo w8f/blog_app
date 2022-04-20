@@ -1,4 +1,4 @@
-import MenuBar from "../MenuBar/MenuBar";
+import { MenuBar } from "../MenuBar";
 import { Meta, Story } from "@storybook/react";
 
 export default {

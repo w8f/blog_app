@@ -1,4 +1,4 @@
-import Layout from "../Layout/Layout";
+import { Layout } from "../Layout";
 import { Meta, Story } from "@storybook/react";
 
 export default {

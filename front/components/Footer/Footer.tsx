@@ -1,6 +1,6 @@
 import { VFC } from "react";
 
-const Footer: VFC = () => {
+export const Footer: VFC = () => {
   return (
     <footer className="border-t-2 w-full bg-white">
       <h1 className="text-center mt-4 mb-2">
@@ -9,5 +9,3 @@ const Footer: VFC = () => {
     </footer>
   );
 };
-
-export default Footer;

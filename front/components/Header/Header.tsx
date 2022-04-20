@@ -3,8 +3,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
-import HeaderBtn from "../MenuBtn/MenuBtn";
-import MenuBar from "../../components/MenuBar/MenuBar";
+import { MenuBtn } from "../MenuBtn";
+import { MenuBar } from "../MenuBar";
 import { CategoryProps } from "../../interfaces";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
  * Header Component
  * @param categories カテゴリリスト
  */
-const Header: VFC<Props> = ({ categories }) => {
+export const Header: VFC<Props> = ({ categories }) => {
   const [openMenuBar, setOpenMenuBar] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ const Header: VFC<Props> = ({ categories }) => {
       <div className="lg:w-2/12" />
       <div className="lg:w-6/12">
         <div className="flex items-center h-full">
-          <HeaderBtn setOpenMenuBar={setOpenMenuBar} />
+          <MenuBtn setOpenMenuBar={setOpenMenuBar} />
           <Link href="/">
             <a className="hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 sm:ml-8 z-10">
               Hayakawa&apos;s Tech Blog
@@ -41,5 +41,3 @@ const Header: VFC<Props> = ({ categories }) => {
     </div>
   );
 };
-
-export default Header;

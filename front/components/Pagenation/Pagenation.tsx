@@ -6,7 +6,7 @@ type PagenationProps = {
   totalCount: number;
 };
 
-const Pagenation: VFC<PagenationProps> = ({ totalCount }) => {
+export const Pagenation: VFC<PagenationProps> = ({ totalCount }) => {
   return (
     <>
       {[...Array(Math.ceil(totalCount / perpage))].map((_, idx) => {
@@ -26,5 +26,3 @@ const Pagenation: VFC<PagenationProps> = ({ totalCount }) => {
     </>
   );
 };
-
-export default Pagenation;

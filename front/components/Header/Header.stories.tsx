@@ -1,4 +1,4 @@
-import Header from "../Header/Header";
+import { Header } from "../Header";
 import { Meta, Story } from "@storybook/react";
 
 export default {

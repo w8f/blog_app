@@ -10,11 +10,11 @@ import { fetchAll } from "../../utils/util";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Tag from "../../components/Tag/Tag";
-import { Blog } from "../../interfaces/index";
-import { CategoryProps } from "../../interfaces/index";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { Tag } from "../../components/Tag";
+import { Blog } from "../../interfaces";
+import { CategoryProps } from "../../interfaces";
 
 type tableOfContent = {
   title: string;

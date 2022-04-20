@@ -1,8 +1,8 @@
-import Post from "./Posts";
+import { Posts } from "./Posts";
 import { Meta, Story } from "@storybook/react";
 
 export default {
-  component: Post,
+  component: Posts,
   title: "Post",
 } as Meta;
 
@@ -32,7 +32,7 @@ export const Default: Story = () => {
     <dl>
       <dt>Default</dt>
       <dd>
-        <Post totalCount={blogs.length} blogs={blogs} />
+        <Posts totalCount={blogs.length} blogs={blogs} />
       </dd>
     </dl>
   );

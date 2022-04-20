@@ -1,5 +1,5 @@
-import Tag from "../Tag/Tag";
-import { TagProps } from "../../interfaces/index";
+import { Tag } from "./Tag";
+import { TagProps } from "../../interfaces";
 import { Meta, Story } from "@storybook/react";
 
 export default {

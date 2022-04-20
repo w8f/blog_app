@@ -1,4 +1,4 @@
-import ArticleCard from "../ArticleCard/ArticleCard";
+import { ArticleCard } from "../ArticleCard";
 import { Meta, Story } from "@storybook/react";
 
 export default {

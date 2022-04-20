@@ -1,16 +1,16 @@
 import { VFC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBlog } from "@fortawesome/free-solid-svg-icons";
-import { Blog } from "../../interfaces/index";
-import ArticleCard from "../../components/ArticleCard/ArticleCard";
-import Pagenation from "../../components/Pagenation/Pagenation";
+import { Blog } from "../../interfaces";
+import { ArticleCard } from "../ArticleCard";
+import { Pagenation } from "../Pagenation";
 
 type PostsProps = {
   blogs: Blog[];
   totalCount: number;
 };
 
-const Posts: VFC<PostsProps> = ({ blogs, totalCount }) => {
+export const Posts: VFC<PostsProps> = ({ blogs, totalCount }) => {
   return (
     <>
       <div className="flex justify-center items-center mt-6 md:mt-12 mb-10">
@@ -29,5 +29,3 @@ const Posts: VFC<PostsProps> = ({ blogs, totalCount }) => {
     </>
   );
 };
-
-export default Posts;
