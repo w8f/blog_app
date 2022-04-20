@@ -7,8 +7,17 @@ services:
     command: sh -c 'npm run dev'
     ports:
       - "3000:3000"
-      - "6006:6006"
     tty: true
+    volumes:
+      - "./front:/front"
+    working_dir: /front
+  storybook:
+    build:
+      context: ./
+      dockerfile: ./docker/front/Dockerfile
+    command: sh -c 'yarn storybook'
+    ports:
+      - "6006:6006"
     volumes:
       - "./front:/front"
     working_dir: /front
