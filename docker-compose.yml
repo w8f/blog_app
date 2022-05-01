@@ -3,7 +3,7 @@ services:
   front:
     build:
       context: ./
-      dockerfile: ./docker/front/Dockerfile
+      dockerfile: ./front/Dockerfile
     command: sh -c 'npm run dev'
     ports:
       - "3000:3000"
@@ -14,7 +14,7 @@ services:
   storybook:
     build:
       context: ./
-      dockerfile: ./docker/front/Dockerfile
+      dockerfile: ./front/Dockerfile
     command: sh -c 'yarn storybook'
     ports:
       - "6006:6006"
