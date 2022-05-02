@@ -1,9 +1,9 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { Blog, CategoryProps } from "../interfaces/index";
+import { Blog, CategoryProps } from "../interfaces";
 import { client } from "../libs/client";
-import Layout from "../components/Layout/Layout";
-import Posts from "../components/Posts/Posts";
+import { Layout } from "../components/Layout";
+import { Posts } from "../components/Posts";
 import { perpage } from "../constants";
 
 type Props = {

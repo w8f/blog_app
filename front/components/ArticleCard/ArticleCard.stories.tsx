@@ -1,4 +1,4 @@
-import ArticleCard from "../ArticleCard/ArticleCard";
+import { ArticleCard } from "../ArticleCard";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -81,44 +81,44 @@ const NoCategoryArgs = {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...defaultArgs} />
       </dd>
-    </>
+    </dl>
   );
 };
 
 export const LongTitle: Story = () => {
   return (
-    <>
+    <dl>
       <dt>LongTitle</dt>
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...longTitleArgs} />
       </dd>
-    </>
+    </dl>
   );
 };
 
 export const TooManyCategory: Story = () => {
   return (
-    <>
+    <dl>
       <dt>TooManyCategory</dt>
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...manyCategory} />
       </dd>
-    </>
+    </dl>
   );
 };
 
 export const NoCategory: Story = () => {
   return (
-    <>
+    <dl>
       <dt>NoCategory</dt>
       <dd style={{ margin: "2px" }}>
         <ArticleCard {...NoCategoryArgs} />
       </dd>
-    </>
+    </dl>
   );
 };

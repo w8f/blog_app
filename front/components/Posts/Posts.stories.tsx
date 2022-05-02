@@ -1,8 +1,8 @@
-import Post from "./Posts";
+import { Posts } from "./Posts";
 import { Meta, Story } from "@storybook/react";
 
 export default {
-  component: Post,
+  component: Posts,
   title: "Post",
 } as Meta;
 
@@ -29,11 +29,11 @@ const blogs = [...Array(8)].map((_, i) => {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
-        <Post totalCount={blogs.length} blogs={blogs} />
+        <Posts totalCount={blogs.length} blogs={blogs} />
       </dd>
-    </>
+    </dl>
   );
 };

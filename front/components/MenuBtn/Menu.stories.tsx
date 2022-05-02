@@ -1,4 +1,4 @@
-import MenuBtn from "../MenuBtn/MenuBtn";
+import { MenuBtn } from "../MenuBtn";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -8,7 +8,7 @@ export default {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       {/* MenuBtnの高さは親要素の高さに依存(height: 100%) */}
       <dd style={{ height: 56 }}>
@@ -18,6 +18,6 @@ export const Default: Story = () => {
           }}
         />
       </dd>
-    </>
+    </dl>
   );
 };

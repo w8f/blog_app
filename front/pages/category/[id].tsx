@@ -3,9 +3,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { client } from "../../libs/client";
 import "highlight.js/styles/vs2015.css";
-import ArticleCard from "../../components/ArticleCard/ArticleCard";
-import Layout from "../../components/Layout/Layout";
-import { CategoryProps, Blog } from "../../interfaces/index";
+import { ArticleCard } from "../../components/ArticleCard";
+import { Layout } from "../../components/Layout";
+import { CategoryProps, Blog } from "../../interfaces";
 
 type Props = {
   blogs: Blog[];

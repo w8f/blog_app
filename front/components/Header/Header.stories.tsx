@@ -1,4 +1,4 @@
-import Header from "../Header/Header";
+import { Header } from "../Header";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -20,11 +20,11 @@ const categories = [...Array(10)].map((_, idx) => {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Header categories={categories} />
       </dd>
-    </>
+    </dl>
   );
 };

@@ -1,6 +1,6 @@
 import { VFC } from "react";
-import Category from "../Category/Category";
-import { CategoryProps } from "../../interfaces/index";
+import { Category } from "../Category";
+import { CategoryProps } from "../../interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,7 +12,7 @@ type MenuBarProps = { categories: CategoryProps[] };
  *
  * @param categories カテゴリリスト
  */
-const MenuBar: VFC<MenuBarProps> = ({ categories }) => {
+export const MenuBar: VFC<MenuBarProps> = ({ categories }) => {
   return (
     <div className="bg-sky-50 border-t-2 inline-block w-full">
       <div className="m-4 flex items-center">
@@ -29,5 +29,3 @@ const MenuBar: VFC<MenuBarProps> = ({ categories }) => {
     </div>
   );
 };
-
-export default MenuBar;

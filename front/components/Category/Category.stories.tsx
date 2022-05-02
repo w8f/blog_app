@@ -1,4 +1,4 @@
-import Category from "../Category/Category";
+import { Category } from "../Category";
 import { Meta, Story } from "@storybook/react";
 
 export default {
@@ -18,11 +18,11 @@ const defaultArgs = {
 
 export const Default: Story = () => {
   return (
-    <>
+    <dl>
       <dt>Default</dt>
       <dd>
         <Category {...defaultArgs} />
       </dd>
-    </>
+    </dl>
   );
 };
